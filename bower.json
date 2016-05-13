@@ -1,0 +1,13 @@
+{
+  "name": "wigeon",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "bootstrap": "~3.2.0"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "angular": "1.5.0-build.4357+sha.2a85a63"
+  }
+}

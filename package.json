@@ -1,0 +1,39 @@
+{
+  "name": "splashpage",
+  "version": "1.0.0",
+  "description": "This is the splash page for Wigeon.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wigeon/splashPage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wigeon/splashPage/issues"
+  },
+  "homepage": "https://github.com/Wigeon/splashPage#readme",
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-bower-src": "^0.1.0",
+    "gulp-build": "^0.5.3",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-filter": "^3.0.1",
+    "gulp-htmlmin": "^1.2.0",
+    "gulp-ignore": "^2.0.1",
+    "gulp-install": "^0.6.0",
+    "gulp-clean-css": "^2.0.7",
+    "gulp-notify": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-ruby-sass": "^2.0.5",
+    "gulp-sass": "^2.1.0",
+    "gulp-uglify": "^1.4.2"
+  }
+}
