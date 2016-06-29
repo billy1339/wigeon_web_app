@@ -7,6 +7,9 @@ var appRoutes = function($routeProvider) {
     .when('/sign-in', {
       templateUrl: 'views/sign-in.html'
     })
+    .when('/sign-up', {
+      templateUrl: 'views/sign-up.html'
+    })
     .when('/nest', {
       templateUrl: 'views/nest.html'
     })

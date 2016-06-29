@@ -4,9 +4,9 @@ var SignUpCtrl = function($scope, $http) {
   $scope.EmailSignUp = function(user) {
 
     var form = new FormData();
-    form.append("user_email", "will8@test.com");
-    form.append("user_password", "will123");
-    form.append("user_full_name", "will_test");
+    form.append("user_email", user.email);
+    form.append("user_password", user.password);
+    form.append("user_full_name", user.full_name);
 
     $.ajax({
       "async": true,
