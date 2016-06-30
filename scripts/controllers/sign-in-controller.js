@@ -23,7 +23,9 @@ var SignInCtrl = function($scope, $http, $cookies) {
   };
 
   function setUserCookie(token) {
-    $cookies.put('wigeon_user_token', token)
+    var today = new Date();
+    var exp = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+    $cookies.put('wigeon_user_token', token, { 'expires' : exp })
   };
 };
 
