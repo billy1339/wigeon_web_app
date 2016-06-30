@@ -1,4 +1,4 @@
-var SignUpCtrl = function($scope, $http) {
+var SignUpCtrl = function($scope, $http, $cookies) {
   'use strict'
 
   $scope.EmailSignUp = function(user) {
@@ -18,12 +18,16 @@ var SignUpCtrl = function($scope, $http) {
       "mimeType": "multipart/form-data",
       "data": form
     }).done(function (response) {
-      debugger; 
-      console.log(response);
+      var deserialized = JSON.parse(response);
+      setUserCookie(deserialized.user_token);
     });
 
   };
+
+  function setUserCookie(token) {
+    $cookies.put('wigeon_user_token', token)
+  };
 };
 
-SignUpCtrl.$inject = ['$scope', '$http'];
+SignUpCtrl.$inject = ['$scope', '$http', '$cookies'];
 angular.module('WigeonApp').controller('SignUpCtrl', SignUpCtrl);

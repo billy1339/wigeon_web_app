@@ -17,14 +17,13 @@ var SignInCtrl = function($scope, $http, $cookies) {
         "mimeType": "multipart/form-data",
         "data": signInForm
     }).done(function (response) {
-      debugger; 
-      setUserCookie('hi');
-      console.log(response);
+      var deserialized = JSON.parse(response);
+      setUserCookie(deserialized.user_token);
     });
   };
 
   function setUserCookie(token) {
-    $cookies.put('user_token', token)
+    $cookies.put('wigeon_user_token', token)
   };
 };
 
