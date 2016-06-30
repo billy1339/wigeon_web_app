@@ -1,4 +1,4 @@
-var SignInCtrl = function($scope, $http) {
+var SignInCtrl = function($scope, $http, $cookies) {
   'use strict'
 
   $scope.UserLogin = function(user) {
@@ -18,10 +18,15 @@ var SignInCtrl = function($scope, $http) {
         "data": signInForm
     }).done(function (response) {
       debugger; 
+      setUserCookie('hi');
       console.log(response);
     });
   };
+
+  function setUserCookie(token) {
+    $cookies.put('user_token', token)
+  };
 };
 
-SignInCtrl.$inject = ['$scope', '$http'];
+SignInCtrl.$inject = ['$scope', '$http', '$cookies'];
 angular.module('WigeonApp').controller('SignInCtrl', SignInCtrl);

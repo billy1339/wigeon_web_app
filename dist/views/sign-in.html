@@ -1,0 +1,13 @@
+<div ng-controller='SignInCtrl'>
+	<h1> hello world </h1> 
+
+	<form validate>
+		<fieldset class="form-group">
+			<label for="SignInUserEmail">Email</label>
+			<input type="email" id="SignInUserEmail" ng-model="user.email">
+			<label for="SignInUserPassword">Passord</label>
+			<input type="password" id="SignInUserPassword" ng-model="user.password">
+			<button type="submit" ng-click="UserLogin(user)">Sign In</button>
+		</fieldset>
+	</form>
+</div>

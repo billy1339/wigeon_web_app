@@ -1,4 +1,5 @@
-angular.module('WigeonApp', ['ngRoute']);
+angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
+
 // .config(function( $locationProvider) {
 //    if(window.history && window.history.pushState){
 // 	   $locationProvider.html5Mode({
