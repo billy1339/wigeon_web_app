@@ -26,9 +26,11 @@ var SignUpCtrl = function($scope, $http, $cookies) {
 
   function setUserCookie(token) {
     var today = new Date();
-    var exp = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+    var exp = new Date(today.getFullYear(), today.getMonth()+3, today.getDate());
     $cookies.put('wigeon_user_token', token, { 'expires' : exp })
   };
+
+  //$cookies.remove("wigeon_user_token");
 };
 
 SignUpCtrl.$inject = ['$scope', '$http', '$cookies'];

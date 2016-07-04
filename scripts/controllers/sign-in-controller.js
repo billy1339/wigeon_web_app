@@ -17,6 +17,7 @@ var SignInCtrl = function($scope, $http, $cookies) {
         "mimeType": "multipart/form-data",
         "data": signInForm
     }).done(function (response) {
+      debugger; 
       var deserialized = JSON.parse(response);
       setUserCookie(deserialized.user_token);
     });
