@@ -19,7 +19,12 @@ var SignUpCtrl = function($scope, $http, $cookies) {
       "data": form
     }).done(function (response) {
       var deserialized = JSON.parse(response);
-      setUserCookie(deserialized.user_token);
+      if (deserialized.error_name !== undefined) {
+        alert(deserialized.error_name + deserialized.error_message)
+      }
+      else {
+        setUserCookie(deserialized.user_token);
+      }
     });
 
   };

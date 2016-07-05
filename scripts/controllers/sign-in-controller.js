@@ -17,9 +17,13 @@ var SignInCtrl = function($scope, $http, $cookies) {
         "mimeType": "multipart/form-data",
         "data": signInForm
     }).done(function (response) {
-      debugger; 
       var deserialized = JSON.parse(response);
-      setUserCookie(deserialized.user_token);
+      if (deserialized.error_name !== undefined) {
+        alert(deserialized.error_name + deserialized.error_message)
+      }
+      else {
+        setUserCookie(deserialized.user_token);
+      }
     });
   };
 
