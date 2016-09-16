@@ -1,4 +1,4 @@
-var SignInCtrl = function($scope, $http, $cookies) {
+var SignInCtrl = function($scope, $http, $cookies, $location, $window) {
   'use strict'
 
   $scope.UserLogin = function(user) {
@@ -23,6 +23,9 @@ var SignInCtrl = function($scope, $http, $cookies) {
       }
       else {
         setUserCookie(deserialized.user_token);
+        console.log(deserialized);
+        $window.location.href = '/#/nest';
+        //$location.path("/nest");
       }
     });
   };
@@ -34,5 +37,5 @@ var SignInCtrl = function($scope, $http, $cookies) {
   };
 };
 
-SignInCtrl.$inject = ['$scope', '$http', '$cookies'];
+SignInCtrl.$inject = ['$scope', '$http', '$cookies', '$location', '$window'];
 angular.module('WigeonApp').controller('SignInCtrl', SignInCtrl);

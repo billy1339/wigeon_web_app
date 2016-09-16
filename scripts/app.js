@@ -1,13 +1,12 @@
 angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
-
-// .config(function( $locationProvider) {
+// .config(function($locationProvider) {
 //    if(window.history && window.history.pushState){
 // 	   $locationProvider.html5Mode({
 // 		   enabled: true,
 // 		   requireBase: false
 // 		});
 //    }
-// })	
+// });	
 // .config([
 //     '$httpProvider',
 //     function($httpProvider) {

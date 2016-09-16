@@ -1,4 +1,4 @@
-var appRoutes = function($routeProvider) {
+var appRoutes = function($routeProvider, $locationProvider) {
   'use strict';
   $routeProvider
     .when('/', {
@@ -17,12 +17,9 @@ var appRoutes = function($routeProvider) {
       redirectTo: '/'
     });
     
-    // $locationProvider.html5Mode({
-    //   enabled: true,
-    //   requireBase: false
-    // });
+    // $locationProvider.html5Mode(true);
 };
-appRoutes.$inject = ['$routeProvider'];
+appRoutes.$inject = ['$routeProvider', '$locationProvider'];
 angular.module('WigeonApp').config(appRoutes);
 
 
