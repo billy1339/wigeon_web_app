@@ -33,6 +33,7 @@ var SignUpCtrl = function($scope, $http, $cookies) {
     var today = new Date();
     var exp = new Date(today.getFullYear(), today.getMonth()+3, today.getDate());
     $cookies.put('wigeon_user_token', token, { 'expires' : exp })
+    $window.location.href = '/#/nest';
   };
 
   //$cookies.remove("wigeon_user_token");
