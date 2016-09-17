@@ -45,7 +45,7 @@ gulp.task('styles', function() {
 gulp.task('watch', function() {
   gulp.watch('./scripts/**/*.js', ['scripts']);
   gulp.watch('./sass/*.scss', ['styles']);
-  gulp.watch('./templates/**/*.html', ['html']);
+  gulp.watch('./views/**/*.html', ['html']);
 });
 
 // clean task
