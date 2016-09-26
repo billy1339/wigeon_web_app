@@ -10,8 +10,8 @@
 			<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid">Sign In</button>
 		</fieldset>
 	</form>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" fb-button>
+<!-- </fb:login-button> -->
 
 <div id="status">
 </div>
