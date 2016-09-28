@@ -36,9 +36,9 @@ var appRun = function ($rootScope) {
             $rootScope.$broadcast("fb_statusChange", {'status': response.status});
         });
 
-          FB.getLoginStatus(function(response) {
-		    statusChangeCallback(response);
-		  });
+	   //    FB.getLoginStatus(function(response) {
+		  //   statusChangeCallback(response);
+		  // });
     };
 
   (function(d, s, id) {

@@ -1,4 +1,4 @@
-<div ng-controller='SignInCtrl'>
+<div ng-controller='SignInCtrl' id='SignInCtrl'>
 	<h1> hello world </h1> 
 
 	<form name="signInForm" validate>
@@ -10,7 +10,7 @@
 			<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid">Sign In</button>
 		</fieldset>
 	</form>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" fb-button>
+<fb:login-button scope="public_profile,email" onlogin="angular.element(document.getElementById('SignInCtrl')).scope().facebookLogIn()" fb-button>
 <!-- </fb:login-button> -->
 
 <div id="status">
