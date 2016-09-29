@@ -43,8 +43,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     if (facebookStatusResponse.status === 'connected') {
       var promise = FacebookFactory.getMyLastName();
       promise.then(function(response) {
-        debugger; 
-        GetFacebookInfo(response, facebookStatusResponse.authResponse.signedRequest);
+        GetFacebookInfo(response);
       });
       //var fbToken = response.AuthResponse.userID;
     } else if (facebookStatusResponse.status === 'not_authorized') {
@@ -59,18 +58,18 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     }
   }
 
-  function GetFacebookInfo(info, accessToken) {
+  function GetFacebookInfo(info) {
+    var hash = getHash(info.id)
+    debugger; 
     var facebookSignInForm = new FormData();
-    console.log(info)
-    console.log(accessToken)
     facebookSignInForm.append("user_email", "");
     facebookSignInForm.append("user_fb_id", info.id);
     facebookSignInForm.append("user_full_name", info.name)
-    facebookSignInForm.append("user_security_check", accessToken)
+    facebookSignInForm.append("user_security_check", hash)
 
-     //const SALT_A = "Superior";
-        //const SALT_B = "Boisterious";
-        //user user_security_check needs to be sha-256 salted and hashed; 
+    //const SALT_A = "Superior";
+    //const SALT_B = "Boisterious";
+    //user user_security_check needs to be sha-256 salted and hashed; 
 
     $.ajax({
         "async": true,
@@ -96,30 +95,11 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     });
   }
 
-
-
-  // This is called with the results from from FB.getLoginStatus().
-  // function statusChangeCallback(response) {
-  //   console.log('statusChangeCallback');
-  //   console.log(response);
-  //   // The response object is returned with a status field that lets the
-  //   // app know the current login status of the person.
-  //   // Full docs on the response object can be found in the documentation
-  //   // for FB.getLoginStatus().
-  //   if (response.status === 'connected') {
-  //     // Logged into your app and Facebook.
-  //     // testAPI();
-  //   } else if (response.status === 'not_authorized') {
-  //     // The person is logged into Facebook, but not your app.
-  //     document.getElementById('status').innerHTML = 'Please log ' +
-  //       'into this app.';
-  //   } else {
-  //     // The person is not logged into Facebook, so we're not sure if
-  //     // they are logged into this app or not.
-  //     document.getElementById('status').innerHTML = 'Please log ' +
-  //       'into Facebook.';
-  //   }
-  // }
+  function getHash(id) {
+    var shaObj = new jsSHA("SHA-256", "TEXT");
+    shaObj.update("Superior"+id+"Boisterious");
+    return shaObj.getHash("HEX");
+  }
 
   function setUserCookie(token) {
     var today = new Date();
