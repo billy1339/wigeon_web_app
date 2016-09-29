@@ -22,7 +22,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
         alert(deserialized.error_name + deserialized.error_message)
       }
       else {
-        setUserCookie(deserialized.user_token);
+        setUserCookie(deserialized.user_token, deserialized.user_id);
         console.log(deserialized);
         $window.location.href = '/#/nest';
         //$location.path("/nest");
@@ -45,7 +45,10 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
       promise.then(function(response) {
         GetFacebookInfo(response);
       });
-      //var fbToken = response.AuthResponse.userID;
+
+    // below this needs to be refactored in case a user is not logged in
+    // HELP!!! 
+
     } else if (facebookStatusResponse.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -60,7 +63,6 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
 
   function GetFacebookInfo(info) {
     var hash = getHash(info.id)
-    debugger; 
     var facebookSignInForm = new FormData();
     facebookSignInForm.append("user_email", "");
     facebookSignInForm.append("user_fb_id", info.id);
@@ -81,13 +83,12 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
         "mimeType": "multipart/form-data",
         "data": facebookSignInForm
     }).done(function (response) {
-      debugger; 
       var deserialized = JSON.parse(response);
       if (deserialized.error_name !== undefined) {
         alert(deserialized.error_name + deserialized.error_message)
       }
       else {
-        setUserCookie(deserialized.user_token);
+        setUserCookie(deserialized.user_token, deserialized.user_id);
         console.log(deserialized);
         $window.location.href = '/#/nest';
         //$location.path("/nest");
@@ -101,10 +102,11 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     return shaObj.getHash("HEX");
   }
 
-  function setUserCookie(token) {
+  function setUserCookie(token, id) {
+    var cookie = token + "~" + id;
     var today = new Date();
     var exp = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
-    $cookies.put('wigeon_user_token', token, { 'expires' : exp })
+    $cookies.put('wigeon_user_token', cookie, { 'expires' : exp })
   };
 };
 

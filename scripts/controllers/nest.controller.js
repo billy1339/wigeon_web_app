@@ -15,7 +15,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory) {
   function PopulateSuggestions() {
     var promise = SuggestionFactory.fetch();
     promise.then(function(suggestions) {
-      console.log(suggestions);
+      debugger; 
     });
   }
 
