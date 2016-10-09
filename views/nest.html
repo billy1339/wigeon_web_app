@@ -1,3 +1,15 @@
 <div ng-controller="NestCtrl">
-	<a ng-click="SignOut()">Sign Out</a>
+	<div class='suggestion-box container'>
+		<div class='row'>
+			<div ng-repeat="suggestion in suggestions" class='col-xs-12 suggestion-item'>
+				<div class='suggestion-picture'>
+					<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+				</div>
+				<div class='suggestion-content-info'>
+					<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title}}</h4>
+					<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

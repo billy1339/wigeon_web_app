@@ -25,7 +25,6 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
         setUserCookie(deserialized.user_token, deserialized.user_id);
         console.log(deserialized);
         $window.location.href = '/#/nest';
-        //$location.path("/nest");
       }
     });
   };

@@ -25,7 +25,6 @@
         "mimeType": "multipart/form-data",
         "data": fetchInbox
       }).done(function (response) {
-        debugger; 
         var inboxData = JSON.parse(response);
         deferred.resolve(inboxData)
       });
