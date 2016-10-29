@@ -3,7 +3,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
-  
+
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
