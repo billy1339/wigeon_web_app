@@ -1,4 +1,4 @@
-var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory) {
+var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope) {
   'use strict'
 
   // we want to get all the user info right off the back and probably have deferred promise
@@ -39,6 +39,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory) {
     return items;
   }
 
+$scope.populateType = function (typeid) {
+  return $rootScope.types[typeid]
+}
 // inbox_suggestion
 // suggestion_address
 // suggestion_background_image
@@ -78,6 +81,6 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory) {
   }
 };
 
-NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory'];
+NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope'];
 angular.module('WigeonApp').controller('NestCtrl', NestCtrl);
 

@@ -1,4 +1,4 @@
-var SignUpCtrl = function($scope, $http, $cookies) {
+var SignUpCtrl =  function($scope, $http, $cookies, $location, $window, FacebookFactory, $rootScope) {
   'use strict'
 
   $scope.EmailSignUp = function(user) {
@@ -23,7 +23,9 @@ var SignUpCtrl = function($scope, $http, $cookies) {
         alert(deserialized.error_name + deserialized.error_message)
       }
       else {
-        setUserCookie(deserialized.user_token);
+        setUserCookie(deserialized.user_token, deserialized.user_id);
+        console.log(deserialized);
+        $window.location.href = '/#/nest';
       }
     });
 
@@ -39,7 +41,7 @@ var SignUpCtrl = function($scope, $http, $cookies) {
   //$cookies.remove("wigeon_user_token");
 };
 
-SignUpCtrl.$inject = ['$scope', '$http', '$cookies'];
+SignUpCtrl.$inject = ['$scope', '$http', '$cookies', '$location', '$window', 'FacebookFactory', '$rootScope'];
 angular.module('WigeonApp').controller('SignUpCtrl', SignUpCtrl);
 
   // This is called with the results from from FB.getLoginStatus().

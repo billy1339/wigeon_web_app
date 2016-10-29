@@ -22,7 +22,42 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
 var appRun = function ($rootScope) {
 	$rootScope.facebookAppId = '872785199480947';
 	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
-
+  $rootScope.types = {
+    0 : {
+      'title' : 'ALL',
+      'id': '0'
+    },
+    1 : {
+      'title' : 'WATCH',
+      'img' : 'images/watch.png',
+      'id' : '1',
+      'color' : '#4257A6'
+    },
+    2 : {
+        'title' : 'LISTEN',
+        'img' : 'images/listen.png',
+        'id' : '2',
+        'color' : '#F37221'
+    },
+    3 : {
+      'title' : 'GO',
+      'img' : 'images/go.png',
+      'id' : '3',
+      'color' : '#FEBC22'
+    },
+    4 : {
+      'title' : 'READ',
+      'img' : 'images/read.png',
+      'id' : '4',
+      'color' : '#D83939'
+    },
+    5 : {
+      'title' : 'OTHER',
+      'img' : 'images/other.png',
+      'id' : '5',
+      'color' : '#1C706F'
+    }
+  }
 	// can we put this somewhere else?? 
     window.fbAsyncInit = function () {
         FB.init({
