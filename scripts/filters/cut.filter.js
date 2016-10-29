@@ -1,3 +1,4 @@
+//http://stackoverflow.com/questions/18095727/limit-the-length-of-a-string-with-angularjs
 var CutFilter =  function() {
         return function (value, wordwise, max, tail) {
             if (!value) return '';

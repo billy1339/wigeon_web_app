@@ -1,6 +1,16 @@
 var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookFactory, $rootScope) {
   'use strict'
 
+  getUserInfo();
+
+  function getUserInfo() {
+    var user_token = $cookies.get("wigeon_user_token");
+    if (user_token) {
+      $window.location.href = '/#/nest';
+    }
+  }
+
+
   $scope.UserLogin = function(user) {
 
     var signInForm = new FormData();
