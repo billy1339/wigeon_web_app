@@ -29,31 +29,31 @@ var appRun = function ($rootScope) {
     },
     1 : {
       'title' : 'WATCH',
-      'img' : 'images/watch.png',
+      'img' : 'assets/images/watch.png',
       'id' : '1',
       'color' : '#4257A6'
     },
     2 : {
         'title' : 'LISTEN',
-        'img' : 'images/listen.png',
+        'img' : 'assets/images/listen.png',
         'id' : '2',
         'color' : '#F37221'
     },
     3 : {
       'title' : 'GO',
-      'img' : 'images/go.png',
+      'img' : 'assets/images/go.png',
       'id' : '3',
       'color' : '#FEBC22'
     },
     4 : {
       'title' : 'READ',
-      'img' : 'images/read.png',
+      'img' : 'assets/images/read.png',
       'id' : '4',
       'color' : '#D83939'
     },
     5 : {
       'title' : 'OTHER',
-      'img' : 'images/other.png',
+      'img' : 'assets/images/other.png',
       'id' : '5',
       'color' : '#1C706F'
     }
