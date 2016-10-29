@@ -40,6 +40,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return items;
   }
 
+  
 
 // inbox_suggestion
 // suggestion_address
