@@ -7,20 +7,21 @@
       </div>
       <div class="modal-body">
         <p>{{this.suggestionModelInfo.suggestion_description}}</p>
-        <div ng-if="this.suggestionModalInfo.suggestion_type.title == WATCH">
+        <p>{{this.suggestionModelInfo.suggestion_type.title}}</p>
+        <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'WATCH' ">
           <p> watch </p>
         </div>
-         <div ng-if="this.suggestionModalInfo.suggestion_type.title == READ">
-          <p> watch </p>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'READ' ">
+          <p> read </p>
         </div>
-         <div ng-if="this.suggestionModalInfo.suggestion_type.title == LISTEN">
-          <p> watch </p>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'LISTEN' ">
+          <p> listen </p>
         </div>
-         <div ng-if="this.suggestionModalInfo.suggestion_type.title == GO">
-          <p> watch </p>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'GO' ">
+          <p> go </p>
         </div>
-         <div ng-if="this.suggestionModalInfo.suggestion_type.title == OTHER">
-          <p> watch </p>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'OTHER' ">
+          <p> other </p>
         </div>
       </div>
       <div class="modal-footer">
