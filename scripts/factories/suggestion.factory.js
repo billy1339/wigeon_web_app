@@ -1,4 +1,4 @@
- var SuggestionFactory = function($http, $q, $cookies) {
+ var SuggestionFactory = function($http, $q, $cookies, $rootScope) {
   'use strict';
   var fetchInbox = function() {
       var deferred, posts;
@@ -26,12 +26,24 @@
         "data": fetchInbox
       }).done(function (response) {
         var inboxData = JSON.parse(response);
+        inboxData = addTypeInfoToData(inboxData);
         deferred.resolve(inboxData)
       });
 
       return deferred.promise;
   };
 
+  function addTypeInfoToData(data) {
+    for(var i=0; i < data.objects.length; i++) {
+      var type = populateType(data.objects[i].inbox_suggestion.suggestion_type);
+      data.objects[i].inbox_suggestion.suggestion_type = type; 
+    }
+    return data; 
+  };
+
+  function populateType(typeid) {
+    return $rootScope.types[typeid]
+  }
 
   return {
     fetch: fetchInbox
@@ -39,5 +51,5 @@
 
 };
 
-SuggestionFactory.$inject = ['$http', '$q', '$cookies'];
+SuggestionFactory.$inject = ['$http', '$q', '$cookies', '$rootScope'];
 angular.module('WigeonApp').factory('SuggestionFactory', SuggestionFactory);

@@ -16,6 +16,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     var promise = SuggestionFactory.fetch();
     promise.then(function(response) {
       $scope.suggestions = response.objects; 
+      debugger; 
     });
   }
 
@@ -39,9 +40,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return items;
   }
 
-$scope.populateType = function (typeid) {
-  return $rootScope.types[typeid]
-}
+
 // inbox_suggestion
 // suggestion_address
 // suggestion_background_image
