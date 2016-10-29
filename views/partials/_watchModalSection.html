@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-6">
+			<p>{{this.suggestionModelInfo.suggestion_description}}</p>
+			<p>https://www.youtube.com/v/ + {{this.suggestionModelInfo.suggestion_source_item_id}}</p>
+		</div>
+		<div class="col-xs-6">
+			<!-- <img src="{{this.suggestionModelInfo.suggestion_background_image}}"> -->
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+				<iframe id="ytplayer" type="text/html" width="640" height="390"
+  					src="{{'https://www.youtube.com/v/' + this.suggestionModelInfo.suggestion_source_item_id}}"
+  					frameborder="0"></iframe>
+		</div>
+	</div>
+</div>

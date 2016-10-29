@@ -40,6 +40,10 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return items;
   }
 
+  // $scope.myFilter = function (type) { 
+  //   return ; 
+  // };
+
   
 
 // inbox_suggestion

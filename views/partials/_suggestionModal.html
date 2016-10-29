@@ -6,10 +6,8 @@
         <h4 class="modal-title">{{this.suggestionModelInfo.suggestion_title}}</h4>
       </div>
       <div class="modal-body">
-        <p>{{this.suggestionModelInfo.suggestion_description}}</p>
-        <p>{{this.suggestionModelInfo.suggestion_type.title}}</p>
         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'WATCH' ">
-          <p> watch </p>
+          <div ng-include="'views/partials/_watchModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'READ' ">
           <p> read </p>

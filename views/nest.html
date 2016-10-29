@@ -2,14 +2,14 @@
 	<div class='suggestion-box container'>
 		<div class='row'>
 		<div class='sort-buttons'>	
-			<button>All</button>
-			<button>Watch</button>
-			<button>Listen</button>
-			<button>Go</button>
-			<button>Read</button>
-			<button>Other</button>
+			<button ng-click="myFilter = null">All</button>
+			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}">Watch</button>
+			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'LISTEN'}}}">Listen</button>
+			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}">Go</button>
+			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}">Read</button>
+			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}">Other</button>
 		</div>	
-			<div ng-repeat="suggestion in suggestions" class='col-xs-12 suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'> 
+			<div ng-repeat="suggestion in suggestions | filter: myFilter" class='col-xs-12 suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'> 
 				<div class='suggestion-picture'>
 					<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 				</div>
