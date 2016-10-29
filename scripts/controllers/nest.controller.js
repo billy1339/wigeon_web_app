@@ -16,14 +16,14 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     var promise = SuggestionFactory.fetch();
     promise.then(function(response) {
       $scope.suggestions = response.objects; 
-      debugger; 
     });
   }
 
   $scope.populateModal = function(id) {
     $scope.suggestionModelInfo = findSuggestion(id);
+    console.log($scope.suggestionModelInfo);
     $("#SuggestionModal").modal({
-      keyboard: true
+      keyboard: false
     });
     // what to do if it cannot find one....???
   }
@@ -71,8 +71,6 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 // suggestion_title
 // suggestion_type
 // suggestion_url
-
-
 
   $scope.SignOut = function() {
     $cookies.remove("wigeon_user_token");
