@@ -15,15 +15,13 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   function PopulateSuggestions() {
     var promise = SuggestionFactory.fetch();
     promise.then(function(response) {
-      $scope.suggestions = response.objects; 
+      $scope.suggestions = response; 
     });
   }
 
   $scope.populateModal = function(id) {
     $scope.suggestionModelInfo = findSuggestion(id);
-    console.log($scope.suggestionModelInfo);
     $("#SuggestionModal").modal();
-    // what to do if it cannot find one....???
   }
 
   function findSuggestion(id) {
