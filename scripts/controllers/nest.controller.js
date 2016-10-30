@@ -1,4 +1,4 @@
-var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope) {
+var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope, $sce) {
   'use strict'
 
   // we want to get all the user info right off the back and probably have deferred promise
@@ -22,9 +22,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   $scope.populateModal = function(id) {
     $scope.suggestionModelInfo = findSuggestion(id);
     console.log($scope.suggestionModelInfo);
-    $("#SuggestionModal").modal({
-      keyboard: false
-    });
+    $("#SuggestionModal").modal();
     // what to do if it cannot find one....???
   }
 
@@ -40,9 +38,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return items;
   }
 
-  // $scope.myFilter = function (type) { 
-  //   return ; 
-  // };
+  $scope.getIframeSrc = function(src) {
+    return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src);
+  };
 
   
 
@@ -83,6 +81,6 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   }
 };
 
-NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope'];
+NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce'];
 angular.module('WigeonApp').controller('NestCtrl', NestCtrl);
 
