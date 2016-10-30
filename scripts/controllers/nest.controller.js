@@ -3,6 +3,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
+  $scope.view = "LIST";
 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
@@ -16,11 +17,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     var promise = SuggestionFactory.fetch(1, 0);
     promise.then(function(response) {
       $scope.suggestions = response; 
-      console.log($scope.suggestions.length);
       var secondPromise = SuggestionFactory.fetch(10, 1);
       secondPromise.then(function(response) {
         $scope.suggestions = $scope.suggestions.concat(response);
-        console.log($scope.suggestions.length);
       });
     });
   }
@@ -46,6 +45,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src);
   };
 
+  $scope.changeLayout = function(layout) {
+    $scope.view = layout;
+  };
   
 
 // inbox_suggestion

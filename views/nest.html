@@ -9,19 +9,41 @@
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}">Read</button>
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}">Other</button>
 		</div>	
-			<div ng-repeat="suggestion in suggestions | filter: myFilter" class='col-xs-12 suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'> 
-				<div class='suggestion-picture'>
-					<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
-				</div>
-				<div class='suggestion-content-info'>
-					<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title}}</h4>
-					<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-					<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
-					<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
-					<div class='type-image'>
-						<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+		<div class='layout-buttons'>
+			<a ng-click="changeLayout('LIST')">List |</a>
+			<a ng-click="changeLayout('GRID')"> Grid</a>
+		</div>
+	</div>
+	<div class='row'>
+			<div ng-repeat="suggestion in suggestions | filter: myFilter" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
+				<div class="list-view col-xs-12" ng-if="view == 'LIST' ">
+					<div class='suggestion-picture'>
+						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+					</div>
+					<div class='suggestion-content-info'>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title}}</h4>
+						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
+						<div class='type-image'>
+							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+						</div>
 					</div>
 				</div>
+				<div class="grid-view col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
+					<div class='suggestion-picture'>
+						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+					</div>
+					<div class='suggestion-content-info'>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title}}</h4>
+						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
+						<div class='type-image'>
+							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+						</div>
+					</div>
+				</div>  
 			</div>
 		</div>
 	</div>
