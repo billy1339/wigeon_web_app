@@ -1,12 +1,12 @@
  var SuggestionFactory = function($http, $q, $cookies, $rootScope) {
   'use strict';
 
-  function getAllSuggestions() {
+  function getAllSuggestions(calls, start) {
     var cookie = $cookies.get("wigeon_user_token").split("~");
     var sugs = [];
     var deferred = $q.defer();
     var promises = [];
-    for(var i = 0; i < 10; i ++) {
+    for(var i = start; i < calls; i ++) {
       promises.push(inboxRequest(cookie, i.toString())); 
     }
     $q.all(promises).then(function(result) {

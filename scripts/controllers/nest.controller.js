@@ -13,9 +13,15 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   }
 
   function PopulateSuggestions() {
-    var promise = SuggestionFactory.fetch();
+    var promise = SuggestionFactory.fetch(1, 0);
     promise.then(function(response) {
       $scope.suggestions = response; 
+      console.log($scope.suggestions.length);
+      var secondPromise = SuggestionFactory.fetch(10, 1);
+      secondPromise.then(function(response) {
+        $scope.suggestions = $scope.suggestions.concat(response);
+        console.log($scope.suggestions.length);
+      });
     });
   }
 
