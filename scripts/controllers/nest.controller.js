@@ -26,19 +26,20 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   $scope.populateModal = function(id) {
     $scope.suggestionModelInfo = findSuggestion(id);
+    console.log($scope.suggestionModelInfo); 
     $("#SuggestionModal").modal();
   }
 
   function findSuggestion(id) {
-    var sugs, items;
+    var sugs, item;
     sugs = $scope.suggestions;
     for(var i=0; i < sugs.length; i++) {
       if (id == sugs[i].inbox_suggestion.suggestion_id) {
-        items = sugs[i].inbox_suggestion;
+        item = sugs[i].inbox_suggestion;
         break;
       }
     }
-    return items;
+    return item;
   }
 
   $scope.getIframeSrc = function(src) {
