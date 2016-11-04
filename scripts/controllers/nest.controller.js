@@ -3,6 +3,8 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
+  initListeners();
+
   $scope.view = "LIST";
 
   function getUserInfo() {
@@ -27,7 +29,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   $scope.populateModal = function(id) {
     $scope.suggestionModelInfo = findSuggestion(id);
     console.log($scope.suggestionModelInfo); 
-    $("#SuggestionModal").modal();
+    $("#SuggestionDetailModal").modal();
   }
 
   function findSuggestion(id) {
@@ -46,9 +48,25 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src);
   };
 
+  $scope.returnTrustedSrc = function(src) {
+    src = src + "?cb=" + new Date().getTime();
+    return $sce.trustAsResourceUrl(src);
+  };
+
   $scope.changeLayout = function(layout) {
     $scope.view = layout;
   };
+
+  function initListeners() {
+    $(document).ready(function() {
+      $("#NestCtrl").on('hidden.bs.modal', '#SuggestionDetailModal', function () {
+        var audio = $("#MusicPreview")[0];
+        if (audio !== undefined) {
+          audio.pause(); 
+        } 
+      })
+    });
+  }
   
 
 // inbox_suggestion

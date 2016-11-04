@@ -1,4 +1,4 @@
- <div class="modal fade" tabindex="-1" role="dialog" id="SuggestionModal">
+ <div class="modal fade" tabindex="-1" role="dialog" id="SuggestionDetailModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -13,13 +13,15 @@
           <div ng-include="'views/partials/_readModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'LISTEN' ">
-          <p> listen </p>
+          <div ng-include="'views/partials/_listenModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'GO' ">
+            <!-- might have to actually use yelp api -->
           <p> go </p>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'OTHER' ">
           <p> other </p>
+          <!-- is there a way to get like a grab of a website -->
         </div>
       </div>
       <div class="modal-footer">
