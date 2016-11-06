@@ -1,4 +1,4 @@
-var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope, $sce) {
+var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope, $sce, YelpFactory) {
   'use strict'
 
   // we want to get all the user info right off the back and probably have deferred promise
@@ -27,9 +27,18 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   }
 
   $scope.populateModal = function(id) {
-    $scope.suggestionModelInfo = findSuggestion(id);
-    console.log($scope.suggestionModelInfo); 
-    $("#SuggestionDetailModal").modal();
+    var sug = findSuggestion(id);
+    $scope.suggestionModelInfo = sug;
+    if (sug.suggestion_type.title === "GO") {
+      var promise = YelpFactory.fetch(sug.suggestion_source_item_id); 
+      promise.then(function(response) {
+        console.log(response); 
+        $scope.yelp = response; 
+        $("#SuggestionDetailModal").modal();
+      });
+    } else {
+      $("#SuggestionDetailModal").modal();
+    };
   }
 
   function findSuggestion(id) {
@@ -64,10 +73,12 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
         if (audio !== undefined) {
           audio.pause(); 
         } 
-      })
+      });
+      // one for pagination
     });
   }
-  
+
+
 
 // inbox_suggestion
 // suggestion_address
@@ -106,6 +117,6 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   }
 };
 
-NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce'];
+NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce', 'YelpFactory'];
 angular.module('WigeonApp').controller('NestCtrl', NestCtrl);
 

@@ -16,8 +16,7 @@
           <div ng-include="'views/partials/_listenModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'GO' ">
-            <!-- might have to actually use yelp api -->
-          <p> go </p>
+            <div ng-include="'views/partials/_goModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'OTHER' ">
           <p> other </p>

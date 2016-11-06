@@ -58,6 +58,12 @@ var appRun = function ($rootScope) {
       'color' : '#1C706F'
     }
   }
+
+  // yelp id
+  // w8h9kCBo-KKDU6isgQRWxw
+  // yelp secret
+  // zoiAXVcMesd0NSOFZghEtVAlASu9I5Cub6cSa7Dzob7BGjtQKKGe9EIIngKwMioc
+
 	// can we put this somewhere else?? 
     window.fbAsyncInit = function () {
         FB.init({

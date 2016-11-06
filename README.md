@@ -7,3 +7,4 @@ TO DO:
 * nav bar active tabs
 * encrypt cookie and salts
 * paginate nest 
+* encrypt yelp api access token
