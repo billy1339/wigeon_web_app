@@ -21,7 +21,7 @@
         </div>
     </form>
 	<div class='row'>
-			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
+			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
 				<div class="list-view col-xs-12" ng-if="view == 'LIST' ">
 					<div class='suggestion-picture'>
 						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
@@ -50,6 +50,11 @@
 						</div>
 					</div>
 				</div>  
+			</div>
+		</div>
+		<div class="row" ng-if="suggestions.length > quantity">
+			<div class='col-xs-12'>
+				<p class="see-more-suggestions" ng-click="seeMore()"> See More </p>
 			</div>
 		</div>
 	</div>

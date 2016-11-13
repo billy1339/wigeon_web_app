@@ -6,7 +6,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   initListeners();
 
   $scope.view = "LIST";
-
+  $scope.quantity = 20; 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
@@ -74,8 +74,11 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
           audio.pause(); 
         } 
       });
-      // one for pagination
     });
+  }
+
+  $scope.seeMore = function() {
+    $scope.quantity += 20; 
   }
 
 
