@@ -28,7 +28,7 @@
 						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 					</div>
 					<div class='suggestion-content-info'>
-						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title}}</h4>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:' ...'}}</h4>
 						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
 						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
 						<div class='type-image'>
@@ -41,9 +41,9 @@
 						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 					</div>
 					<div class='suggestion-content-info'>
-						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title}}</h4>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
 						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description}}</p>
 						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
 						<div class='type-image'>
 							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
