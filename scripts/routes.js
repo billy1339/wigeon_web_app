@@ -13,6 +13,9 @@ var appRoutes = function($routeProvider, $locationProvider) {
     .when('/nest', {
       templateUrl: 'views/nest.html'
     })
+    .when('/profile', {
+      templateUrl: 'views/profile.html'
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -1,0 +1,48 @@
+<div ng-controller="ProfileCtrl" id="ProfileCtrl">
+	  <form class="form-inline">
+     
+    </form>
+	<div class='row'>
+			<h3 class="nest-title">{{user_full_name}}</h3>
+			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
+				<div ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
+					<div class='suggestion-picture'>
+						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+					</div>
+					<div class='suggestion-content-info'>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:' ...'}}</h4>
+						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+						<div class='type-image'>
+							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+						</div>
+					</div>
+				</div>
+				<div class="grid-view col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
+					<div class='suggestion-picture'>
+						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+					</div>
+					<div class='suggestion-content-info'>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
+						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description}}</p>
+						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
+						<div class='type-image'>
+							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+						</div>
+					</div>
+				</div>  
+			</div>
+		</div>
+		<div class="row" ng-if="suggestions.length > quantity">
+			<div class='col-xs-12'>
+				<p class="see-more-suggestions" ng-click="seeMore()"> See More </p>
+			</div>
+		</div>
+	</div>
+
+	<div ng-include="'views/partials/_suggestionModal.html'"></div>
+</div>
+
+
+
