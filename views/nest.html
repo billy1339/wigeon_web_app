@@ -1,6 +1,7 @@
 <div ng-controller="NestCtrl" id="NestCtrl">
 	<div class='suggestion-box container'>
-		<div class='row filtering'>
+	
+	<div class='row filtering'>
 		<div class='sort-buttons'>	
 			<button ng-click="myFilter = null">All</button>
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}"><img src="assets/images/watch.png" height="30px" width="30px"></button>
@@ -9,19 +10,20 @@
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}"><img src="assets/images/read.png" height="30px" width="30px"></button></button>
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}"><img src="assets/images/other.png" height="30px" width="30px"></button></button>
 		</div>	
-		<div class='layout-buttons'>
-			<a ng-click="changeLayout('LIST')">List |</a>
-			<a ng-click="changeLayout('GRID')"> Grid</a>
-		</div>
+	  	<form class="form-inline search-suggestions">
+	        <div class="form-group">
+	            <input type="text" ng-model="search" class="form-control" placeholder="&#xf002; Search">
+	        </div>
+    	</form>
 	</div>
-	  <form class="form-inline">
-        <div class="form-group">
-            <label >Search</label>
-            <input type="text" ng-model="search" class="form-control" placeholder="Search">
-        </div>
-    </form>
+	
+
 	<div class='row'>
 			<h3 class="nest-title"> My Nest </h3>
+			<div class='layout-buttons'>
+				<a ng-click="changeLayout('LIST')"><i class="fa fa-list" aria-hidden="true"></i></a>
+				<a ng-click="changeLayout('GRID')"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+			</div>
 			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
 				<div ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
 					<div class='suggestion-picture'>

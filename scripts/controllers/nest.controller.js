@@ -16,7 +16,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   }
 
   function PopulateSuggestions() {
-    var promise = SuggestionFactory.fetch(1, 0);
+    var promise = SuggestionFactory.fetch(1, 0); 
     promise.then(function(response) {
       $scope.suggestions = response; 
       var secondPromise = SuggestionFactory.fetch(10, 1);
