@@ -1,9 +1,8 @@
-var ProfileCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope, $sce, YelpFactory) {
+var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileFactory, $rootScope, $sce, YelpFactory) {
   'use strict'
 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
-  initListeners();
 
   $scope.view = "LIST";
   $scope.quantity = 20; 
@@ -12,21 +11,41 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, 
   	if (!user_token) {
   		$window.location.href = '/#/';
   	}
-  	PopulateSuggestions();
+  	getUser();
+    PopulateSuggestions();
   }
 
-  function PopulateSuggestions() {
-    var promise = SuggestionFactory.fetch(1, 0);
+
+function getUser() {
+  var promise = ProfileFactory.fetch();
+  promise.then(function(response) {
+    console.log(response)
+    $scope.profile = response;
+  });
+}
+
+// function getFeed() {
+//   var promise = ProfileFactory.get();
+//   promise.then(function(response) {
+//     console.log(response)
+//     $scope.userFeed = response;
+//   });
+// }
+
+  
+function PopulateSuggestions() {
+    var promise = ProfileFactory.get(1, 0);
     promise.then(function(response) {
+      console.log(response);
       $scope.suggestions = response; 
-      var secondPromise = SuggestionFactory.fetch(10, 1);
+      var secondPromise = ProfileFactory.get(10, 1);
       secondPromise.then(function(response) {
         $scope.suggestions = $scope.suggestions.concat(response);
       });
     });
   }
 
-  $scope.populateModal = function(id) {
+ $scope.populateModal = function(id) {
     var sug = findSuggestion(id);
     $scope.suggestionModelInfo = sug;
     if (sug.suggestion_type.title === "GO") {
@@ -52,36 +71,6 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, 
     }
     return item;
   }
-
-  $scope.getIframeSrc = function(src) {
-    return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src);
-  };
-
-  $scope.returnTrustedSrc = function(src) {
-    src = src + "?cb=" + new Date().getTime();
-    return $sce.trustAsResourceUrl(src);
-  };
-
-  $scope.changeLayout = function(layout) {
-    $scope.view = layout;
-  };
-
-  function initListeners() {
-    $(document).ready(function() {
-      $("#NestCtrl").on('hidden.bs.modal', '#SuggestionDetailModal', function () {
-        var audio = $("#MusicPreview")[0];
-        if (audio !== undefined) {
-          audio.pause(); 
-        } 
-      });
-    });
-  }
-
-  $scope.seeMore = function() {
-    $scope.quantity += 20; 
-  }
-
-
 
 // inbox_suggestion
 // suggestion_address
@@ -118,8 +107,9 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, 
     $cookies.remove("wigeon_user_token");
     $window.location.href = '/#/';
   }
-};
 
-NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce', 'YelpFactory'];
+ }
+
+ProfileCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'ProfileFactory', '$rootScope', '$sce', 'YelpFactory'];
 angular.module('WigeonApp').controller('ProfileCtrl', ProfileCtrl);
 
