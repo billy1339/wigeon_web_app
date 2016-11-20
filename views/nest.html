@@ -33,23 +33,22 @@
 					<div class='suggestion-content-info'>
 						<h4 class='nest-suggestion-title'><img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px' class='type-image'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:'...'}}</h4>
 						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:'...'}}</p>
-					<!-- 	<div class='type-image'>
-							
-						</div> -->
+						<p class='nest-suggestion-description'>Description: {{suggestion.inbox_suggestion.suggestion_description | cut:true:100:'...'}}</p>
 					</div>
 				</div>
 				<div class="grid-view col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
-					<div class='suggestion-picture'>
-						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
-					</div>
-					<div class='suggestion-content-info'>
-						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
-						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:25:' ...'}}</p>
-						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
-						<div class='type-image'>
-							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+					<div class="grid-content-container">
+						<div class='suggestion-picture'>
+							<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+						</div>
+						<div class='suggestion-content-info'>
+							<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
+							<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+							<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:25:' ...'}}</p>
+							<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
+							<div class='type-image'>
+								<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+							</div>
 						</div>
 					</div>
 				</div>  

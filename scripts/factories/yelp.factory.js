@@ -17,6 +17,7 @@
     var tokenSecret = 'CwneNMN8-3SfuVhsqv6wU48THfI'; //Token Secret
     var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, { encodeSignature: false});
     params['oauth_signature'] = signature;
+    url += "?callback=JSON_CALLBACK";
     $http.jsonp(url, {params: params}).success(function(response) {
       deferred.resolve(response);
     });

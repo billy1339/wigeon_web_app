@@ -5,7 +5,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   getUserInfo();
   initListeners();
 
-  $scope.view = "LIST";
+  $scope.view = "GRID";//"LIST";
   $scope.quantity = 20; 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
@@ -30,7 +30,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     var sug = findSuggestion(id);
     $scope.suggestionModelInfo = sug;
     if (sug.suggestion_type.title === "GO") {
-      var promise = YelpFactory.fetch(sug.suggestion_source_item_id); 
+      var promise = YelpFactory.fetch(sug.suggestion_source_item_id);
       promise.then(function(response) {
         console.log(response); 
         $scope.yelp = response; 
