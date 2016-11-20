@@ -1,34 +1,61 @@
 <div ng-controller="ProfileCtrl" id="ProfileCtrl">
+	<div class='row'>
+			<div class='user-info'>
+				<img src="{{profile.user_profile_image}}">
+				<h2 class="user-name">{{profile.user_full_name}}</h2>
+				<div ng-class='total-followers'>Total Followers: {{profile.user_num_followers}}</div>
+				<div class='total-following'>Total Following: {{profile.user_num_following}}</div>
+				<div class='bio'>About: {{profile.user_bio}}</div>
+			</div>
+
+			<div class='suggestion-box container'>
+		<div class='row filtering'>
+		<div class='sort-buttons'>	
+			<button ng-click="myFilter = null">All</button>
+			<button ng-click="myFilter = {feed_suggestion : {suggestion_type : {title : 'WATCH'}}}"><img src="assets/images/watch.png" height="30px" width="30px"></button>
+			<button ng-click="myFilter = {feed_suggestion : {suggestion_type : {title : 'LISTEN'}}}"><img src="assets/images/listen.png" height="30px" width="30px"></button>
+			<button ng-click="myFilter = {feed_suggestion : {suggestion_type : {title : 'GO'}}}"><img src="assets/images/go.png" height="30px" width="30px"></button></button>
+			<button ng-click="myFilter = {feed_suggestion : {suggestion_type : {title : 'READ'}}}"><img src="assets/images/read.png" height="30px" width="30px"></button></button>
+			<button ng-click="myFilter = {feed_suggestion : {suggestion_type : {title : 'OTHER'}}}"><img src="assets/images/other.png" height="30px" width="30px"></button></button>
+		</div>	
+		<div class='layout-buttons'>
+			<a ng-click="changeLayout('LIST')">List |</a>
+			<a ng-click="changeLayout('GRID')"> Grid</a>
+		</div>
+	</div>
 	  <form class="form-inline">
-     
+        <div class="form-group">
+            <label >Search</label>
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
     </form>
 	<div class='row'>
-			<h3 class="nest-title">{{user_full_name}}</h3>
-			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
-				<div ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
+			<h3 class="nest-title"> My Nest </h3>
+			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.feed_suggestion.suggestion_id)" data-id='{{suggestion.feed_suggestion.suggestion_id}}'>
+				<div ng-class="suggestion.feed_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
 					<div class='suggestion-picture'>
-						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+						<img src='{{suggestion.feed_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 					</div>
 					<div class='suggestion-content-info'>
-						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:' ...'}}</h4>
-						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+						<h4 class='nest-suggestion-title'>{{suggestion.feed_suggestion.suggestion_title | cut:true:75:' ...'}}</h4>
+						<h6>Suggested By: {{suggestion.feed_suggestion.suggestion_user.user_full_name}}<h6>
+						<p class='nest-suggestion-description'>{{suggestion.feed_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
 						<div class='type-image'>
-							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+							<img src='{{suggestion.feed_suggestion.suggestion_type.img}}' height='15px' width='15px'>
 						</div>
 					</div>
 				</div>
 				<div class="grid-view col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
 					<div class='suggestion-picture'>
-						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
+						<img src='{{suggestion.feed_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 					</div>
 					<div class='suggestion-content-info'>
-						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
-						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description}}</p>
-						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
+						<h4 class='nest-suggestion-title'>{{suggestion.feed_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
+						<h6>Suggested By: {{suggestion.feed_suggestion.suggestion_user.user_full_name}}<h6>
+						<p class='nest-suggestion-description'>{{suggestion.feed_suggestion.suggestion_description}}</p>
+						<p class='nest-suggestion-type'>{{suggestion.feed_suggestion.suggestion_type.title}}</p>
 						<div class='type-image'>
-							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
+							<img src='{{suggestion.feed_suggestion.suggestion_type.img}}' height='15px' width='15px'>
 						</div>
 					</div>
 				</div>  
@@ -43,6 +70,3 @@
 
 	<div ng-include="'views/partials/_suggestionModal.html'"></div>
 </div>
-
-
-
