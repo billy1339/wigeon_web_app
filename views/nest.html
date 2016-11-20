@@ -9,10 +9,11 @@
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}"><img src="assets/images/go.png" height="30px" width="30px"></button></button>
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}"><img src="assets/images/read.png" height="30px" width="30px"></button></button>
 			<button ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}"><img src="assets/images/other.png" height="30px" width="30px"></button></button>
-		</div>	
+		</div>
+		<div class="search-icon"><i class="fa fa-search fa-2x icon" aria-hidden="true"></i></div>
 	  	<form class="form-inline search-suggestions">
 	        <div class="form-group">
-	            <input type="text" ng-model="search" class="form-control" placeholder="&#xf002; Search">
+	            <input type="text" ng-model="search" class="form-control" placeholder="Search">
 	        </div>
     	</form>
 	</div>
@@ -30,22 +31,22 @@
 						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 					</div>
 					<div class='suggestion-content-info'>
-						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:' ...'}}</h4>
+						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:'...'}}</h4>
 						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:' ...'}}</p>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:100:'...'}}</p>
 						<div class='type-image'>
 							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>
 						</div>
 					</div>
 				</div>
-				<div class="grid-view col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
+				<div class="grid-view col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
 					<div class='suggestion-picture'>
 						<img src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px'>
 					</div>
 					<div class='suggestion-content-info'>
 						<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
 						<h6>Suggested By: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
-						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description}}</p>
+						<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:25:' ...'}}</p>
 						<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
 						<div class='type-image'>
 							<img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px'>

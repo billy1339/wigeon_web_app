@@ -68,12 +68,20 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   function initListeners() {
     $(document).ready(function() {
+
       $("#NestCtrl").on('hidden.bs.modal', '#SuggestionDetailModal', function () {
         var audio = $("#MusicPreview")[0];
         if (audio !== undefined) {
           audio.pause(); 
         } 
       });
+
+      $(".search-icon .icon").on("click", function() {
+        console.log('hi');
+        $(".search-icon").hide();
+        $(".search-suggestions").show("slow");
+      });
+
     });
   }
 
