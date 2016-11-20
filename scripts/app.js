@@ -19,7 +19,7 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
   // .run([
   //   '$rootScope'
   // ]);
-var appRun = function ($rootScope) {
+var appRun = function ($rootScope, $cookies) {
 	$rootScope.facebookAppId = '872785199480947';
 	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
   $rootScope.types = {
@@ -59,6 +59,12 @@ var appRun = function ($rootScope) {
     }
   }
 
+  $rootScope.SignOut = function() {
+    debugger; 
+    $cookies.remove("wigeon_user_token");
+    $window.location.href = '/#/';
+  }
+
   // yelp id
   // w8h9kCBo-KKDU6isgQRWxw
   // yelp secret
@@ -92,5 +98,5 @@ var appRun = function ($rootScope) {
 
 };
 
-appRun.$inject = ['$rootScope'];
+appRun.$inject = ['$rootScope', '$cookies'];
 angular.module('WigeonApp').run(appRun);

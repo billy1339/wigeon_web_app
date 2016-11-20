@@ -122,10 +122,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 // suggestion_type
 // suggestion_url
 
-  $scope.SignOut = function() {
-    $cookies.remove("wigeon_user_token");
-    $window.location.href = '/#/';
-  }
+
 };
 
 NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce', 'YelpFactory'];
