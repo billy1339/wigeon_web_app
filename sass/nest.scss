@@ -34,9 +34,9 @@ h1,h2,h3,h4,h5,h6,a,p {
 .layout-buttons {
 	width: 100%; 
 	margin-bottom: 15px; 
-	a {
-		float: right; 
-	}
+	// a {
+	// 	float: right; 
+	// }
 }
 
 .see-more-suggestions {
@@ -49,6 +49,10 @@ h1,h2,h3,h4,h5,h6,a,p {
 
 
 #NestCtrl {
+	.type-image {
+		    margin-right: 5px;
+    		margin-bottom: 4px;
+		}
 	.list-view {
 		padding-left: 0; 
 		border-radius: 10px;
@@ -84,10 +88,6 @@ h1,h2,h3,h4,h5,h6,a,p {
 		&.OTHER {
 			border-left: 15px solid #1C706F; 
 		}
-		.type-image {
-		    margin-right: 5px;
-    		margin-bottom: 4px;
-		}
 	}
 	.grid-view {
 		height: 280px;
@@ -98,31 +98,52 @@ h1,h2,h3,h4,h5,h6,a,p {
 			height:90%;
 			border-radius: 10px;
 			border: 1px solid #d3d3d3;
+			position: relative;
 			// border-bottom: 1px solid #d3d3d3; 	
 			// padding: 5px;  
 			cursor: pointer;
+
+
+			&:hover {
+				.nest-suggestion-title {
+					color: #00b7af; 
+				}
+			}
+
+			.nest-suggestion-title {
+				font-weight: 600; 
+			}
+			&.WATCH {
+				border-left: 15px solid #4257A6;
+			}
+			&.LISTEN {
+				border-left: 15px solid #F37221;
+			}
+			&.GO {
+				border-left: 15px solid #FEBC22;
+			}
+			&.READ {
+				border-left: 15px solid #D83939; 
+			}
+			&.OTHER {
+				border-left: 15px solid #1C706F; 
+			}
+			.suggestion-picture {
+				height: 100px; 
+				width: 100%; 
+				position: absolute; 
+				bottom:0;
+				left: 0; 
+				border-radius: 0 0 10px 0;
+			}
 		}
 		
-		&.WATCH {
-			border-left: 15px solid #4257A6;
-		}
-		&.LISTEN {
-			border-left: 15px solid #F37221;
-		}
-		&.GO {
-			border-left: 15px solid #FEBC22;
-		}
-		&.READ {
-			border-left: 15px solid #D83939; 
-		}
-		&.OTHER {
-			border-left: 15px solid #1C706F; 
-		}
+	
 	}
-	.suggestion-picture {
-		padding-left: 5px;
-	    border-radius: 10%;	
-	}
+	// .suggestion-picture {
+	// 	// padding-left: 5px;
+	//  //    border-radius: 10%;	
+	// }
 	.search-suggestions {
 		display: none; 
 	    padding-top: 5px;	
