@@ -1,3 +1,6 @@
+h1,h2,h3,h4,h5,h6,a,p {
+	font-family: proxima-nova;
+}
 .filtering {
 	padding-bottom: 25px;
     margin: 0 auto;
@@ -51,7 +54,17 @@
 		border-right: 1px solid #d3d3d3;
 		border-bottom: 1px solid #d3d3d3; 	
 		padding: 5px;  
+		cursor: pointer; 
 
+		&:hover {
+			.nest-suggestion-title {
+				color: #00b7af; 
+			}
+		}
+
+		.nest-suggestion-title {
+			font-weight: 600; 
+		}
 		&:first-child {
 			border-top: 1px solid #d3d3d3; 
 		}
@@ -70,10 +83,14 @@
 		&.OTHER {
 			border-left: 15px solid #1C706F; 
 		}
+		.type-image {
+		    margin-right: 5px;
+    		margin-bottom: 4px;
+		}
 	}
 	.grid-view {
 		height: 280px;
-		 
+
 		&.WATCH {
 			border-left: 15px solid #4257A6;
 		}
