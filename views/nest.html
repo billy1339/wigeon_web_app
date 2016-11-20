@@ -43,7 +43,6 @@
 							<h4 class='nest-suggestion-title'><img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px' class='type-image'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
 							<h6>Suggested From: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
 							<p class='nest-suggestion-description'>{{suggestion.inbox_suggestion.suggestion_description | cut:true:25:' ...'}}</p>
-							<p class='nest-suggestion-type'>{{suggestion.inbox_suggestion.suggestion_type.title}}</p>
 						</div>
 						<div class='suggestion-picture' style="background: url('{{'http://52.201.120.48/Wigeon/' + suggestion.inbox_suggestion.suggestion_icon_image}}'), center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title == 'OTHER' ">
 						</div>
