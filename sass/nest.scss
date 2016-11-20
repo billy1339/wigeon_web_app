@@ -1,5 +1,8 @@
 .filtering {
-	padding-bottom: 25px; 
+	padding-bottom: 25px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%; 
 }
 .suggestion-box {
 	padding-top: 15px; 
@@ -68,9 +71,44 @@
 			border-left: 15px solid #1C706F; 
 		}
 	}
+	.grid-view {
+		height: 280px;
+		 
+		&.WATCH {
+			border-left: 15px solid #4257A6;
+		}
+		&.LISTEN {
+			border-left: 15px solid #F37221;
+		}
+		&.GO {
+			border-left: 15px solid #FEBC22;
+		}
+		&.READ {
+			border-left: 15px solid #D83939; 
+		}
+		&.OTHER {
+			border-left: 15px solid #1C706F; 
+		}
+	}
 	.suggestion-picture {
 		padding-left: 5px;
 	    border-radius: 10%;	
+	}
+	.search-suggestions {
+		display: none; 
+	    padding-top: 5px;	
+	}
+	.search-icon {
+		opacity: 0.5; 
+		padding-top: 5px;
+		.icon {
+			transition: all .2s ease-in-out;
+			cursor: pointer; 	 
+			&:hover { 
+				transform: scale(1.1); 
+			}
+		}
+		
 	}
 
 }
