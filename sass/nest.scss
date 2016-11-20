@@ -34,9 +34,17 @@ h1,h2,h3,h4,h5,h6,a,p {
 .layout-buttons {
 	width: 100%; 
 	margin-bottom: 15px; 
-	// a {
-	// 	float: right; 
-	// }
+	a {
+		color: #000000;
+		cursor: pointer; 
+		&.active {
+		color: #00b7af; 
+		}
+		&:hover {
+			color: #00b7af; 
+		}
+	}
+
 }
 
 .see-more-suggestions {

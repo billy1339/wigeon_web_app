@@ -63,6 +63,10 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   };
 
   $scope.changeLayout = function(layout) {
+    $(".layout-buttons a").each(function() {
+      $(this).removeClass("active");
+    });
+    $("#"+layout+"-LAYOUT").addClass("active");
     $scope.view = layout;
   };
 

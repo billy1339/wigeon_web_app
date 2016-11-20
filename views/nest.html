@@ -22,8 +22,8 @@
 	<div class='row'>
 			<h3 class="nest-title"> My Nest </h3>
 			<div class='layout-buttons'>
-				<a ng-click="changeLayout('LIST')"><i class="fa fa-list" aria-hidden="true"></i></a>
-				<a ng-click="changeLayout('GRID')"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+				<a ng-click="changeLayout('LIST')" id="LIST-LAYOUT"><i class="fa fa-list" aria-hidden="true"></i></a>
+				<a ng-click="changeLayout('GRID')" id="GRID-LAYOUT" class="active"><i class="fa fa-th-large" aria-hidden="true"></i></a>
 			</div>
 			<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
 				<div ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
@@ -38,7 +38,6 @@
 				</div>
 				<div  class="grid-view col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
 					<div  ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="grid-content-container">
-					
 						<div class='suggestion-content-info'>
 							<h4 class='nest-suggestion-title'><img src='{{suggestion.inbox_suggestion.suggestion_type.img}}' height='15px' width='15px' class='type-image'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
 							<h6>Suggested From: {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
