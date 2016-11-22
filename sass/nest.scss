@@ -24,7 +24,9 @@ h1,h2,h3,h4,h5,h6,a,p {
 	    padding-left: 22px;
 	}
 }
-
+.nest-title {
+	padding-left: 15px; 
+}
 .sort-buttons {
 	display: inline-block;
 	text-transform: uppercase;
@@ -33,10 +35,16 @@ h1,h2,h3,h4,h5,h6,a,p {
 
 .layout-buttons {
 	width: 100%; 
-	margin-bottom: 15px; 
+	margin-bottom: 30px; 
+	padding-right: 15px; 
+	position: relative;
+    top: -25px;
 	a {
 		color: #000000;
 		cursor: pointer; 
+		float: right; 
+	    padding: 0 5px;
+
 		&.active {
 		color: #00b7af; 
 		}
