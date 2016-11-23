@@ -8,3 +8,4 @@ TO DO:
 * encrypt cookie and salts
 * paginate nest 
 * encrypt yelp api access token
+* possible hash library https://www.npmjs.com/package/crypto-js
