@@ -18,7 +18,8 @@
   // };
 
   function userRequest() {
-      var cookie = $cookies.get("wigeon_user_token").split("~");
+      var cookie = $cookies.get("wigeon_user_token");
+      cookie = CryptoJS.AES.decrypt(cookie, "Wigeon").toString(CryptoJS.enc.Utf8).split("~");
       var deferred = $q.defer();
       var fetchUser = new FormData();
       fetchUser.append("user_id", cookie[1]);
@@ -42,7 +43,8 @@
   }
 
     function userFeed(page) {
-      var cookie = $cookies.get("wigeon_user_token").split("~");
+      var cookie = $cookies.get("wigeon_user_token");
+      cookie = CryptoJS.AES.decrypt(cookie, "Wigeon").toString(CryptoJS.enc.Utf8).split("~");
       var deferred = $q.defer();
       var getUser = new FormData();
       getUser.append("user_id", cookie[1]);

@@ -78,10 +78,6 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     facebookSignInForm.append("user_full_name", info.name)
     facebookSignInForm.append("user_security_check", hash)
 
-    //const SALT_A = "Superior";
-    //const SALT_B = "Boisterious";
-    //user user_security_check needs to be sha-256 salted and hashed; 
-
     $.ajax({
         "async": true,
         "crossDomain": true,
@@ -98,23 +94,19 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
       }
       else {
         setUserCookie(deserialized.user_token, deserialized.user_id);
-        console.log(deserialized);
         $window.location.href = '/#/nest';
-        //$location.path("/nest");
       } 
     });
   }
 
   function getHash(id) {
-    var shaObj = new jsSHA("SHA-256", "TEXT");
-    shaObj.update("Superior"+id+"Boisterious");
-    return shaObj.getHash("HEX");
+    return CryptoJS.SHA256(CryptoJS.AES.decrypt($rootScope.saltA, "Wigeon").toString(CryptoJS.enc.Utf8)+id+CryptoJS.AES.decrypt($rootScope.saltB, "Wigeon").toString(CryptoJS.enc.Utf8));;
   }
 
   function setUserCookie(token, id) {
-    var cookie = token + "~" + id;
+    var cookie = CryptoJS.AES.encrypt(token + "~" + id, "Wigeon");
     var today = new Date();
-    var exp = new Date(today.getFullYear(), today.getMonth()+1, today.getDate());
+    var exp = new Date(today.getFullYear(), today.getMonth()+3, today.getDate());
     $cookies.put('wigeon_user_token', cookie, { 'expires' : exp })
   };
 };
