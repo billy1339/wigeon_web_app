@@ -1,7 +1,7 @@
 <div ng-controller="ProfileCtrl" id="ProfileCtrl">
 	<div class='row'>
 			<div class='user-info'>
-				<img src="{{profile.user_profile_image}}">
+				<img src="{{getProfileImg(profile.user_profile_image)}}" onerror"">
 				<h2 class="user-name">{{profile.user_full_name}}</h2>
 				<div ng-class='total-followers'>Total Followers: {{profile.user_num_followers}}</div>
 				<div class='total-following'>Total Following: {{profile.user_num_following}}</div>
@@ -26,7 +26,6 @@
     	</form>
 	</div>
 	<div class='row'>
-			<h3 class="nest-title"> My Nest </h3>
 				<div class='layout-buttons'>
 				<a ng-click="changeLayout('LIST')" id="LIST-LAYOUT"><i class="fa fa-list" aria-hidden="true"></i></a>
 				<a ng-click="changeLayout('GRID')" id="GRID-LAYOUT" class="active"><i class="fa fa-th-large" aria-hidden="true"></i></a>

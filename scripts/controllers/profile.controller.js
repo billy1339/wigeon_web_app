@@ -3,6 +3,8 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileFactory, $ro
 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
+  initListeners();
+
 
   $scope.view = "GRID";
   $scope.quantity = 20; 
@@ -23,14 +25,6 @@ function getUser() {
     $scope.profile = response;
   });
 }
-
-// function getFeed() {
-//   var promise = ProfileFactory.get();
-//   promise.then(function(response) {
-//     console.log(response)
-//     $scope.userFeed = response;
-//   });
-// }
 
   
 function PopulateSuggestions() {
@@ -108,7 +102,15 @@ function PopulateSuggestions() {
 
     });
   }
-
+$scope.getProfileImg = function(img) {
+  if (img !== undefined) {
+      if (img.indexOf('http') === -1){
+        return "http://52.201.120.48/Wigeon/" + img;
+       }
+      return img;
+    }
+  return;   
+}
   $scope.seeMore = function() {
     $scope.quantity += 20; 
   }
