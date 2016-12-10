@@ -49,6 +49,8 @@
       getUser.append("requesting_user_id", cookie[1]); // needs to be replaced with actual users id (somehow attach to )
       getUser.append("user_token", cookie[0]);
       getUser.append("page", page);
+      getUser.append("search_query", "");
+
 
 
       $.ajax({
