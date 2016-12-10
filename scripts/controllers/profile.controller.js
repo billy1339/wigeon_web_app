@@ -3,7 +3,7 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileFactory, $ro
 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
-
+  initListeners(); 
   $scope.view = "GRID";
   $scope.quantity = 20; 
   function getUserInfo() {
@@ -101,7 +101,7 @@ function PopulateSuggestions() {
       });
 
       $(".search-icon .icon").on("click", function() {
-        console.log('hi');
+        console.log('hiIIII ');
         $(".search-icon").hide();
         $(".search-suggestions").show("slow");
       });
