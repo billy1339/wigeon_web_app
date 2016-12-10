@@ -19,7 +19,7 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
   // .run([
   //   '$rootScope'
   // ]);
-var appRun = function ($rootScope, $cookies) {
+var appRun = function ($rootScope, $cookies, $window) {
 	$rootScope.facebookAppId = "U2FsdGVkX1/CiPk3U3ceQZHwQ/nvMdc2p3tqq6gy62g=";
 	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
   $rootScope.saltA = "U2FsdGVkX19Vw+oZbrtDL8v79TVCLvtNxTnNRQCyFxM=";
@@ -62,7 +62,6 @@ var appRun = function ($rootScope, $cookies) {
   }
 
   $rootScope.SignOut = function() {
-    debugger; 
     $cookies.remove("wigeon_user_token");
     $window.location.href = '/#/';
   }
@@ -100,5 +99,5 @@ var appRun = function ($rootScope, $cookies) {
 
 };
 
-appRun.$inject = ['$rootScope', '$cookies'];
+appRun.$inject = ['$rootScope', '$cookies', '$window'];
 angular.module('WigeonApp').run(appRun);
