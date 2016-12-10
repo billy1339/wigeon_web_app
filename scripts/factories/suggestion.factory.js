@@ -2,7 +2,8 @@
   'use strict';
 
   function getAllSuggestions(calls, start) {
-    var cookie = $cookies.get("wigeon_user_token").split("~");
+    var cookie = $cookies.get("wigeon_user_token");
+    var cookie = CryptoJS.AES.decrypt(cookie, "Wigeon").toString(CryptoJS.enc.Utf8).split("~");
     var sugs = [];
     var deferred = $q.defer();
     var promises = [];
