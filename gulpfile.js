@@ -64,6 +64,7 @@ gulp.task('bower', function () {
         'bower_components/bootstrap/dist/js/bootstrap.min.js', 
         'bower_components/bootstrap/dist/css/bootstrap.min.css', 
         'bower_components/angular-cookies/angular-cookies.min.js', 
+        'bower_components/angular-cookies/angular-cookies.min.js.map',
         'bower_components/angular-bootstrap/ui-bootstrap.min.js', 
         'bower_components/oauth-signature/dist/oauth-signature.min.js', 
         'bower_components/crypto-js/crypto-js.js'])

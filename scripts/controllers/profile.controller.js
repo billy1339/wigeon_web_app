@@ -5,7 +5,6 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileFactory, $ro
   getUserInfo();
   initListeners();
 
-
   $scope.view = "GRID";
   $scope.quantity = 20; 
   function getUserInfo() {
@@ -95,7 +94,7 @@ function PopulateSuggestions() {
       });
 
       $(".search-icon .icon").on("click", function() {
-        console.log('hi');
+        console.log('hiIIII ');
         $(".search-icon").hide();
         $(".search-suggestions").show("slow");
       });

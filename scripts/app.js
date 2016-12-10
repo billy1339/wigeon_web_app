@@ -31,31 +31,31 @@ var appRun = function ($rootScope, $cookies, $window) {
     },
     1 : {
       'title' : 'WATCH',
-      'img' : 'assets/images/watch.png',
+      'img' : '/assets/images/watch.png',
       'id' : '1',
       'color' : '#4257A6'
     },
     2 : {
         'title' : 'LISTEN',
-        'img' : 'assets/images/listen.png',
+        'img' : '/assets/images/listen.png',
         'id' : '2',
         'color' : '#F37221'
     },
     3 : {
       'title' : 'GO',
-      'img' : 'assets/images/go.png',
+      'img' : '/assets/images/go.png',
       'id' : '3',
       'color' : '#FEBC22'
     },
     4 : {
       'title' : 'READ',
-      'img' : 'assets/images/read.png',
+      'img' : '/assets/images/read.png',
       'id' : '4',
       'color' : '#D83939'
     },
     5 : {
       'title' : 'OTHER',
-      'img' : 'assets/images/other.png',
+      'img' : '/assets/images/other.png',
       'id' : '5',
       'color' : '#1C706F'
     }
