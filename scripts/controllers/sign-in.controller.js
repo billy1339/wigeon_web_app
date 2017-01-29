@@ -1,4 +1,4 @@
-var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookFactory, $rootScope) {
+var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookFactory, $rootScope, $q) {
   'use strict'
 
   getUserInfo();
@@ -52,9 +52,15 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     if (facebookStatusResponse.status === 'connected') {
       var promise = FacebookFactory.getMyLastName();
       promise.then(function(response) {
-        GetFacebookInfo(response);
+        var apiSignIn = WigeonFacebookSignIn(response);
+        apiSignIn.then(function(result) {
+          if(result.success) {
+            $window.location.href = '/#/nest';
+          } else {
+            alert(result.error_message);
+          }
+        })
       });
-
     // below this needs to be refactored in case a user is not logged in
     // HELP!!! 
 
@@ -70,33 +76,12 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     }
   }
 
-  function GetFacebookInfo(info) {
-    var hash = getHash(info.id)
-    var facebookSignInForm = new FormData();
-    facebookSignInForm.append("user_email", "");
-    facebookSignInForm.append("user_fb_id", info.id);
-    facebookSignInForm.append("user_full_name", info.name)
-    facebookSignInForm.append("user_security_check", hash)
-
-    $.ajax({
-        "async": true,
-        "crossDomain": true,
-        "url": $rootScope.baseApiUrl + "facebook-login.php",
-        "method": "POST",
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data",
-        "data": facebookSignInForm
-    }).done(function (response) {
-      var deserialized = JSON.parse(response);
-      if (deserialized.error_name !== undefined) {
-        alert(deserialized.error_name + deserialized.error_message)
-      }
-      else {
-        setUserCookie(deserialized.user_token, deserialized.user_id);
-        $window.location.href = '/#/nest';
-      } 
+  function WigeonFacebookSignIn(data) {
+    var deferred = $q.defer();
+    $http.post('/api/facebook-sign-in', data).success(function(response){
+      deferred.resolve(response); 
     });
+    return deferred.promise; 
   }
 
   function getHash(id) {
@@ -111,6 +96,6 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
   };
 };
 
-SignInCtrl.$inject = ['$scope', '$http', '$cookies', '$location', '$window', 'FacebookFactory', '$rootScope'];
+SignInCtrl.$inject = ['$scope', '$http', '$cookies', '$location', '$window', 'FacebookFactory', '$rootScope', '$q'];
 angular.module('WigeonApp').controller('SignInCtrl', SignInCtrl);
 

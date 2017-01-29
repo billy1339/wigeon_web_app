@@ -4,7 +4,6 @@
   function getAllSuggestions(calls, start) {
     var deferred = $q.defer(); 
     var data = {
-      userCookie : $cookies.get("wigeon_user_token"),
       calls : calls,
       start : start 
     }
