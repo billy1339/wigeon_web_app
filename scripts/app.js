@@ -22,8 +22,6 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
 var appRun = function ($rootScope, $cookies, $window) {
 	$rootScope.facebookAppId = "U2FsdGVkX1/CiPk3U3ceQZHwQ/nvMdc2p3tqq6gy62g=";
 	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
-  $rootScope.saltA = "U2FsdGVkX19Vw+oZbrtDL8v79TVCLvtNxTnNRQCyFxM=";
-  $rootScope.saltB = "U2FsdGVkX19ipBeIlQompYlt825LOHvFc0U+noySSKo=";
   $rootScope.types = {
     0 : {
       'title' : 'ALL',

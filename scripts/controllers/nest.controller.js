@@ -32,6 +32,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     if (sug.suggestion_type.title === "GO") {
       var promise = YelpFactory.fetch(sug.suggestion_source_item_id);
       promise.then(function(response) {
+        debugger; 
         $scope.yelp = response; 
         $("#SuggestionDetailModal").modal();
       });

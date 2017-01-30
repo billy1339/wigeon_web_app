@@ -9,7 +9,8 @@
 	var cookieParser = require('cookie-parser');
 	var Nest = require('./Server/nest.js').Nest;
 	var SignIn = require('./Server/sign-in.js').SignIn;
-	var Consts = require('./Server/constants.js').Consts;
+	var WigeonConsts = require('./Server/wigeon-consts.js').WigeonConsts;
+	var Yelp = require('./Server/yelp.js').Yelp;
 
   	app.use(express.static(__dirname + '/dist'));     // set the static files location /public/img will be /img for users
 	app.use(cookieParser());
@@ -38,7 +39,7 @@
 	app.post('/api/facebook-sign-in', function(req, res) {
 		var data = req.body;
 		var jsonResponse; 
-		var consts = new Consts(); 
+		var consts = new WigeonConsts(); 
 		var signIn = new SignIn(); 
 		var hashedInfo = CryptoJS.SHA256(consts.SALTA+data.id+consts.SALTB).toString();
 	    signIn.facebookSignInRequest(data, hashedInfo, function(error, body) {
@@ -58,6 +59,13 @@
 	    	}
 	    });
 
+	});
+
+	app.get('/api/yelp', function(req, res) {
+		var yelp = new Yelp();
+		yelp.GetPlace(req.query.yelpId, function(error, response, body) {
+			res.json(body);
+		});
 	});
 
 
