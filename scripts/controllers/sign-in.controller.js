@@ -12,7 +12,6 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
 
 
   $scope.UserLogin = function(user) {
-
     var signInForm = new FormData();
     signInForm.append("user_email", user.email);
     signInForm.append("user_password", user.password);

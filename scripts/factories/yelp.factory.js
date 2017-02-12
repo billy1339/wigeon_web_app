@@ -6,7 +6,8 @@
       params : {
         yelpId : yelp_app_id
       }
-    }
+    };
+    
     var deferred = $q.defer();
     $http.get('/api/yelp', config).then(function(response) {
       var parsed = JSON.parse(response.data)
