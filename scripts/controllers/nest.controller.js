@@ -1,6 +1,7 @@
 var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $rootScope, $sce, YelpFactory) {
   'use strict'
 
+  const vm = this; 
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
   initListeners();
@@ -8,6 +9,10 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   $scope.view = "GRID";//"LIST";
   $scope.quantity = 20; 
+  vm.filterViewName = "All Suggestions";
+  vm.swapFilterViewName = swapFilterViewName;
+  vm.seeMore = seeMore;  
+
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
@@ -33,7 +38,6 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     if (sug.suggestion_type.title === "GO") {
       var promise = YelpFactory.fetch(sug.suggestion_source_item_id);
       promise.then(function(response) {
-        debugger; 
         $scope.yelp = response; 
         $("#SuggestionDetailModal").modal();
       });
@@ -89,12 +93,16 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     });
   }
 
-  $scope.seeMore = function() {
+  function seeMore() {
     $scope.quantity += 20; 
   }
 
   function getUserImgUrl() {
     $rootScope.userImg = $cookies.get("wigeon_user_img");
+  }
+
+  function swapFilterViewName(text) {
+    vm.filterViewName = text; 
   }
 
 };

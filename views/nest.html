@@ -1,15 +1,15 @@
-<div ng-controller="NestCtrl" id="NestCtrl">
+<div ng-controller="NestCtrl as vm" id="NestCtrl">
 	<div class='suggestion-box container'>
 	
 	<div class='filtering left-section'>
 		<div class='sort-buttons'>
 			<ul>
-				<li ng-click="myFilter = null"><a><img src="assets/images/other.png" height="20px" width="20px"><span>All Suggestions</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}"><a><img src="assets/images/watch.png" height="20px" width="20px"><span>Watch</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'LISTEN'}}}"><a><img src="assets/images/listen.png" height="20px" width="20px"><span>Listen</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}"><a><img src="assets/images/go.png" height="20px" width="20px"><span>Go</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}"><a><img src="assets/images/read.png" height="20px" width="20px"><span>Read</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}"><a><img src="assets/images/other.png" height="20px" width="20px"><span>Other</span></a></li>
+				<li ng-click="myFilter = null; vm.swapFilterViewName('All Suggestions')"><a><img src="assets/images/other.png" height="20px" width="20px"><span>All Suggestions</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}; vm.swapFilterViewName('Watch')"><a><img src="assets/images/watch.png" height="20px" width="20px"><span>Watch</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'LISTEN'}}}; vm.swapFilterViewName('Listen')"><a><img src="assets/images/listen.png" height="20px" width="20px"><span>Listen</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}; vm.swapFilterViewName('Go')"><a><img src="assets/images/go.png" height="20px" width="20px"><span>Go</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}; vm.swapFilterViewName('Read')"><a><img src="assets/images/read.png" height="20px" width="20px"><span>Read</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}; vm.swapFilterViewName('Other')"><a><img src="assets/images/other.png" height="20px" width="20px"><span>Other</span></a></li>
 			</ul>	
 		</div>
 		<!-- <div class="search-icon"><i class="fa fa-search fa-2x icon" aria-hidden="true"></i></div>
@@ -22,7 +22,7 @@
 	
 
 	<div class='row right-section'>
-			<h3 class="nest-title"> My Nest | All Suggestions </h3>
+			<h3 class="nest-title"> My Nest | {{vm.filterViewName}} </h3>
 			<div class='layout-buttons'>
 				<a ng-click="changeLayout('LIST')" id="LIST-LAYOUT"><i class="fa fa-list fa-2" aria-hidden="true"></i></a>
 				<a ng-click="changeLayout('GRID')" id="GRID-LAYOUT" class="active"><i class="fa fa-th-large" aria-hidden="true"></i></a>
@@ -58,7 +58,7 @@
 		</div>
 		<div class="row" ng-if="suggestions.length > quantity">
 			<div class='col-xs-12'>
-				<p class="see-more-suggestions" ng-click="seeMore()"> See More </p>
+				<p class="see-more-suggestions" ng-click="vm.seeMore()"> See More </p>
 			</div>
 		</div>
 	</div>

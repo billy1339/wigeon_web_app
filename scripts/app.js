@@ -36,11 +36,11 @@ var appRun = function ($rootScope, $cookies, $window) {
       'color' : '#4257A6'
     },
     2 : {
-        'title' : 'LISTEN',
-        'name' : 'Listen',
-        'img' : '/assets/images/listen.png',
-        'id' : '2',
-        'color' : '#F37221'
+      'title' : 'LISTEN',
+      'name' : 'Listen',
+      'img' : '/assets/images/listen.png',
+      'id' : '2',
+      'color' : '#F37221'
     },
     3 : {
       'title' : 'GO',
@@ -51,14 +51,14 @@ var appRun = function ($rootScope, $cookies, $window) {
     },
     4 : {
       'title' : 'READ',
-      'title' : 'Read',
+      'name' : 'Read',
       'img' : '/assets/images/read.png',
       'id' : '4',
       'color' : '#D83939'
     },
     5 : {
       'title' : 'OTHER',
-      'title' : 'Other',
+      'name' : 'Other',
       'img' : '/assets/images/other.png',
       'id' : '5',
       'color' : '#1C706F'
