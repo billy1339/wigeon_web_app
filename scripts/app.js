@@ -25,34 +25,40 @@ var appRun = function ($rootScope, $cookies, $window) {
   $rootScope.types = {
     0 : {
       'title' : 'ALL',
+      'name' : 'All Suggestions',
       'id': '0'
     },
     1 : {
       'title' : 'WATCH',
+      'name' : 'Watch',
       'img' : '/assets/images/watch.png',
       'id' : '1',
       'color' : '#4257A6'
     },
     2 : {
         'title' : 'LISTEN',
+        'name' : 'Listen',
         'img' : '/assets/images/listen.png',
         'id' : '2',
         'color' : '#F37221'
     },
     3 : {
       'title' : 'GO',
+      'name' : 'Go',
       'img' : '/assets/images/go.png',
       'id' : '3',
       'color' : '#FEBC22'
     },
     4 : {
       'title' : 'READ',
+      'title' : 'Read',
       'img' : '/assets/images/read.png',
       'id' : '4',
       'color' : '#D83939'
     },
     5 : {
       'title' : 'OTHER',
+      'title' : 'Other',
       'img' : '/assets/images/other.png',
       'id' : '5',
       'color' : '#1C706F'
