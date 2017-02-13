@@ -4,6 +4,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
   initListeners();
+  getUserImgUrl();
 
   $scope.view = "GRID";//"LIST";
   $scope.quantity = 20; 
@@ -90,6 +91,10 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   $scope.seeMore = function() {
     $scope.quantity += 20; 
+  }
+
+  function getUserImgUrl() {
+    $rootScope.userImg = $cookies.get("wigeon_user_img");
   }
 
 };

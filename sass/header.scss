@@ -1,8 +1,9 @@
 #Header {
-	background-color: #00b7af;
+	background-color: #F4F4F6;
 	min-height: 65px;
 	border-radius: 0;
 	margin: 0;
+	border-bottom: 1px solid #EFEFF1; 
 
 	.navbar-toggle {
 		span {
@@ -28,12 +29,21 @@
 			}
 			a {
 				padding-top: 20px;
-				color: #fff; 
+				color: #000000;
 				height: 65px;
 			}
 		}
 	
-
+	.user-profile-img {
+		height:25px;
+		width:25px;
+		border-radius:50%;
+		float: left;
+		margin-top: 18px;
+	}
+	.profile-link {
+		float: left; 
+	}
 		// &.hover {
 		// 	color: black; 
 		// } 

@@ -6,7 +6,7 @@ var fbButton = function ($window, $rootScope) {
                           // Load Facebook SDK if not already loaded
                           $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
                               $window.FB.init({
-                                  appId: CryptoJS.AES.decrypt($rootScope.facebookAppId, "Wigeon").toString(CryptoJS.enc.Utf8),
+                                  appId: '872785199480947',
                                   xfbml: true,
                                   version: 'v2.0'
                               });

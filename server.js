@@ -54,7 +54,8 @@
 	    		var encrypted = CryptoJS.AES.encrypt(cookie, "Wigeon");
     			res.cookie('wigeon_user_token', encrypted.toString(), { maxAge: 7776000000});
     			res.json({
-    				success : true
+    				success : true,
+    				user_img : deserialized.user_profile_image
     			});
 	    	}
 	    });

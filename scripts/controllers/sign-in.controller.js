@@ -32,7 +32,6 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
       }
       else {
         setUserCookie(deserialized.user_token, deserialized.user_id);
-        console.log(deserialized);
         $window.location.href = '/#/nest';
       }
     });
@@ -54,6 +53,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
         var apiSignIn = WigeonFacebookSignIn(response);
         apiSignIn.then(function(result) {
           if(result.success) {
+            setUserImgCookie(result.user_img);
             $window.location.href = '/#/nest';
           } else {
             alert(result.error_message);
@@ -83,15 +83,11 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     return deferred.promise; 
   }
 
-  function getHash(id) {
-    return CryptoJS.SHA256(CryptoJS.AES.decrypt($rootScope.saltA, "Wigeon").toString(CryptoJS.enc.Utf8)+id+CryptoJS.AES.decrypt($rootScope.saltB, "Wigeon").toString(CryptoJS.enc.Utf8));;
-  }
-
-  function setUserCookie(token, id) {
-    var cookie = CryptoJS.AES.encrypt(token + "~" + id, "Wigeon");
+  function setUserImgCookie(url) {
+    // TODO if cookie exists, remove it.
     var today = new Date();
     var exp = new Date(today.getFullYear(), today.getMonth()+3, today.getDate());
-    $cookies.put('wigeon_user_token', cookie, { 'expires' : exp })
+    $cookies.put('wigeon_user_img', url, { 'expires' : exp })
   };
 };
 
