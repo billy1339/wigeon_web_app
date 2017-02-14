@@ -90,6 +90,11 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
         $(".search-suggestions").show("slow");
       });
 
+      $('.sort-buttons li').on('click', function() {
+        $('.sort-buttons span.active').removeClass('active');
+        $(this).children('.filter-bullet').addClass('active');
+      });
+
     });
   }
 

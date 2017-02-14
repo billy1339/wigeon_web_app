@@ -37,38 +37,36 @@ h1,h2,h3,h4,h5,h6,a,p {
 .sort-buttons {
 	display: inline-block;
 	padding-right: 20px;
+
 	ul {
 		list-style-type: none;
 		li {
 			cursor: pointer; 
-			padding-top: 5px; 
+			.filter-bullet {
+				color: #F4F4F6; 
+				padding-top:5px;
+				padding-right:5px; 
+				font-size:1.4em;
+				&.active {
+					color: #00b7af !important; 
+				}
+			}
 			a {
 				text-decoration: none;
 				color: inherit;
-				font-size: 12px; 
+				font-size: 16px; 
 				span {
 					padding-left: 10px; 
 				} 
 			}
-			/*put red dot before all the active list items*/
-			&.before {
-  				content: "• "; /*don't miss the space*/
-  				color: red;
-			}
 
-/*put dot but make it invisible before the inactive list items*/
-// .vertical_menu_toggle .second .inner ul li:not(.current_page_item):before {
-//   content: "• "; /*don't miss the space*/
-//   visibility: hidden;
-// }
-			&.active {
-
-			}
-			img {
-				&.hover {
-					opacity: 0.5; 
+			&:hover {
+				img {
+					height: 25px;
+					width: 25px; 
 				}
 			}
+			
 		} 
 	} 
 }
@@ -90,6 +88,9 @@ h1,h2,h3,h4,h5,h6,a,p {
 		}
 		&:hover {
 			color: #00b7af; 
+			img {
+				opacity: 0.5; 
+			}
 		}
 	}
 
