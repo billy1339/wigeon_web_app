@@ -85,8 +85,8 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
         } 
       });
 
-      $(".search-icon .icon").on("click", function() {
-        $(".search-icon").hide();
+      $(".search-icon").on("click", function() {
+        console.log('hi');
         $(".search-suggestions").show("slow");
       });
 
