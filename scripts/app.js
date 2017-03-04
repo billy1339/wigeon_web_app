@@ -20,7 +20,7 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
   //   '$rootScope'
   // ]);
 var appRun = function ($rootScope, $cookies, $window) {
-	$rootScope.facebookAppId = "U2FsdGVkX1/CiPk3U3ceQZHwQ/nvMdc2p3tqq6gy62g=";
+	$rootScope.facebookAppId = '872785199480947';
 	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
   $rootScope.types = {
     0 : {
@@ -73,7 +73,7 @@ var appRun = function ($rootScope, $cookies, $window) {
 	// can we put this somewhere else?? 
     window.fbAsyncInit = function () {
         FB.init({
-    		appId      : CryptoJS.AES.decrypt($rootScope.facebookAppId, "Wigeon").toString(CryptoJS.enc.Utf8),
+    		appId      : $rootScope.facebookAppId,
     		cookie     : true, 
     		xfbml      : true,  
     		version    : 'v2.5'

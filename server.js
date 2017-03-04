@@ -11,6 +11,7 @@
 	var SignIn = require('./Server/sign-in.js').SignIn;
 	var WigeonConsts = require('./Server/wigeon-consts.js').WigeonConsts;
 	var Yelp = require('./Server/yelp.js').Yelp;
+	var ProfileService = require('./Server/profile.js').ProfileService;
 
   	app.use(express.static(__dirname + '/dist'));     // set the static files location /public/img will be /img for users
 	app.use(cookieParser());
@@ -67,6 +68,31 @@
 		yelp.GetPlace(req.query.yelpId, function(error, response, body) {
 			res.json(body);
 		});
+	});
+
+
+    app.get('/api/profile', function(req, res) {
+        var cookie = req.cookies.wigeon_user_token;
+        var profile = new ProfileService();
+        profile.getProfile(cookie, function(error, response) {
+        	var error = JSON.parse(response)
+        	if(error.error_name != undefined) {
+        		res.json(error.error_name + ": " + error.error_message);
+        	}
+        	res.json(response);
+        });
+    });
+
+	app.get('/api/profile/suggestions', function(req,res) {
+	    var cookie = CryptoJS.AES.decrypt(req.cookies.wigeon_user_token, "Wigeon").toString(CryptoJS.enc.Utf8).split("~");
+	    var sugs = [];
+	    var profile = new ProfileService();  
+	    var response = profile.collectAllSuggestionData(sugs, req.query.start, req.query.calls, cookie, function(data) {
+	    	data = data.sort(function(a,b) {
+	    		return b.suggestion_creation_epoch - a.suggestion_creation_epoch;
+	    	});
+	    	res.json(data);
+	    })
 	});
 
 

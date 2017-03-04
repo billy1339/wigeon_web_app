@@ -1,7 +1,6 @@
-var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileFactory, $rootScope, $sce, YelpFactory) {
+var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $rootScope, $sce, YelpFactory) {
   'use strict'
 
-  // we want to get all the user info right off the back and probably have deferred promise
   getUserInfo();
   initListeners();
 
@@ -12,31 +11,27 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileFactory, $ro
   	if (!user_token) {
   		$window.location.href = '/#/';
   	}
-  	getUser();
+  	getUserProfile();
     PopulateSuggestions();
   }
 
 
-function getUser() {
-  var promise = ProfileFactory.fetch();
-  promise.then(function(response) {
-    console.log(response)
-    $scope.profile = response;
-  });
+function getUserProfile() {
+  ProfileService.getProfile().then(
+    function(response) {
+      $scope.profile = JSON.parse(response);
+    });
 }
 
   
 function PopulateSuggestions() {
-    var promise = ProfileFactory.get(1, 0);
-    promise.then(function(response) {
-      console.log(response);
-      $scope.suggestions = response; 
-      var secondPromise = ProfileFactory.get(10, 1);
-      secondPromise.then(function(response) {
-        $scope.suggestions = $scope.suggestions.concat(response);
-      });
-    });
-  }
+  ProfileService.getUserFeed(1,0).then(function(response) {
+    $scope.suggestions = response.data;
+    ProfileService.getUserFeed(10, 1).then(function(response) {
+      $scope.suggestions = $scope.suggestions.concat(response.data);
+    })
+  })
+}
 
  $scope.populateModal = function(id) {
     var sug = findSuggestion(id);
@@ -44,7 +39,6 @@ function PopulateSuggestions() {
     if (sug.suggestion_type.title === "GO") {
       var promise = YelpFactory.fetch(sug.suggestion_source_item_id); 
       promise.then(function(response) {
-        console.log(response); 
         $scope.yelp = response; 
         $("#SuggestionDetailModal").modal();
       });
@@ -94,7 +88,6 @@ function PopulateSuggestions() {
       });
 
       $(".search-icon .icon").on("click", function() {
-        console.log('hiIIII ');
         $(".search-icon").hide();
         $(".search-suggestions").show("slow");
       });
@@ -121,6 +114,6 @@ $scope.getProfileImg = function(img) {
 
  }
 
-ProfileCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'ProfileFactory', '$rootScope', '$sce', 'YelpFactory'];
+ProfileCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'ProfileService', '$rootScope', '$sce', 'YelpFactory'];
 angular.module('WigeonApp').controller('ProfileCtrl', ProfileCtrl);
 
