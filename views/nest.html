@@ -4,12 +4,12 @@
 	<div class='filtering left-section'>
 		<div class='sort-buttons'>
 			<ul>
-				<li ng-click="myFilter = null; vm.swapFilterViewName('All Suggestions')"><span class='filter-bullet active'>&#8226;</span><a><img src="assets/images/other.png" height="20px" width="20px"><span>All Suggestions</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}; vm.swapFilterViewName('Watch')"><span class='filter-bullet'>&#8226;</span><a><img src="assets/images/watch.png" height="20px" width="20px"><span>Watch</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'LISTEN'}}}; vm.swapFilterViewName('Listen')"><span class='filter-bullet'>&#8226;</span><a><img src="assets/images/listen.png" height="20px" width="20px"><span>Listen</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}; vm.swapFilterViewName('Go')"><span class='filter-bullet'>&#8226;</span><a><img src="assets/images/go.png" height="20px" width="20px"><span>Go</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}; vm.swapFilterViewName('Read')"><span class='filter-bullet'>&#8226;</span><a><img src="assets/images/read.png" height="20px" width="20px"><span>Read</span></a></li>
-				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}; vm.swapFilterViewName('Other')"><span class='filter-bullet'>&#8226;</span><a><img src="assets/images/other.png" height="20px" width="20px"><span>Other</span></a></li>
+				<li ng-click="myFilter = null; vm.swapFilterViewName('All Suggestions', 'AllImg')"><span class='filter-bullet active'>&#8226;</span><a><img id="AllImg" src="assets/images/wigeon-webapp_all-green.png" height="20px"><span>All Suggestions</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}; vm.swapFilterViewName('Watch', 'WatchImg')"><span class='filter-bullet'>&#8226;</span><a><img id='WatchImg' ng-src="assets/images/wigeon-webapp_watch-black.png" height="20px"><span>Watch</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'LISTEN'}}}; vm.swapFilterViewName('Listen', 'ListenImg')"><span class='filter-bullet'>&#8226;</span><a><img id='ListenImg' ng-src="assets/images/wigeon-webapp_listen-black.png" height="20px"><span>Listen</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}; vm.swapFilterViewName('Go', 'GoImg')"><span class='filter-bullet'>&#8226;</span><a><img id='GoImg' ng-src="assets/images/wigeon-webapp_go-black.png" height="20px"><span>Go</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}; vm.swapFilterViewName('Read', 'ReadImg')"><span class='filter-bullet'>&#8226;</span><a><img id='ReadImg' ng-src="assets/images/wigeon-webapp_read-black.png" height="20px"><span>Read</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}; vm.swapFilterViewName('Other', 'OtherImg')"><span class='filter-bullet'>&#8226;</span><a><img id='OtherImg' ng-src="assets/images/wigeon-webapp_other-black.png" height="20px"><span>Other</span></a></li>
 			</ul>	
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 				<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
 					<div ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
 						<div class='suggestion-picture'>
-							<img ng-src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='100px' width='100px' fallback-src="{{suggestion.inbox_suggestion.suggestion_icon_image}}">
+							<img ng-src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='124px'fallback-src="{{suggestion.inbox_suggestion.suggestion_icon_image}}">
 						</div>
 						<div class='suggestion-content-info'>
 							<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:'...'}}</h4>

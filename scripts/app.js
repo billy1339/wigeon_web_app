@@ -31,35 +31,35 @@ var appRun = function ($rootScope, $cookies, $window) {
     1 : {
       'title' : 'WATCH',
       'name' : 'Watch',
-      'img' : '/assets/images/watch.png',
+      'img' : '/assets/images/wigeon-webapp_watch-black.png',
       'id' : '1',
       'color' : '#4257A6'
     },
     2 : {
       'title' : 'LISTEN',
       'name' : 'Listen',
-      'img' : '/assets/images/listen.png',
+      'img' : '/assets/images/wigeon-webapp_listen-black.png',
       'id' : '2',
       'color' : '#F37221'
     },
     3 : {
       'title' : 'GO',
       'name' : 'Go',
-      'img' : '/assets/images/go.png',
+      'img' : '/assets/images/wigeon-webapp_go-black.png',
       'id' : '3',
       'color' : '#FEBC22'
     },
     4 : {
       'title' : 'READ',
       'name' : 'Read',
-      'img' : '/assets/images/read.png',
+      'img' : '/assets/images/wigeon-webapp_read-black.png',
       'id' : '4',
       'color' : '#D83939'
     },
     5 : {
       'title' : 'OTHER',
       'name' : 'Other',
-      'img' : '/assets/images/other.png',
+      'img' : '/assets/images/wigeon-webapp_other-black.png',
       'id' : '5',
       'color' : '#1C706F'
     }

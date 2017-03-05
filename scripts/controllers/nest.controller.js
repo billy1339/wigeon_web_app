@@ -11,7 +11,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   $scope.quantity = 20; 
   vm.filterViewName = "All Suggestions";
   vm.swapFilterViewName = swapFilterViewName;
-  vm.seeMore = seeMore;  
+  vm.seeMore = seeMore;
 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
@@ -90,8 +90,13 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
       });
 
       $('.sort-buttons li').on('click', function() {
-        $('.sort-buttons span.active').removeClass('active');
+        var old = $('.sort-buttons span.active');
+        var oldId = '#' + $('.sort-buttons span.active').siblings('a').children('img').prop('id');
+        getFilterImgSrc(oldId);
+        old.removeClass('active');
         $(this).children('.filter-bullet').addClass('active');
+        var newId = '#' + $('.sort-buttons span.active').siblings('a').children('img').prop('id');
+        getFilterImgSrc(newId);
       });
 
     });
@@ -105,10 +110,29 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     $rootScope.userImg = $cookies.get("wigeon_user_img");
   }
 
-  function swapFilterViewName(text) {
+  function swapFilterViewName(text, id) {
     vm.filterViewName = text; 
+    // var newActive = '#'+id;
+    // var oldActive = $('.filter-bullet.active').siblings('a').children('img').prop('id');
+    // debugger;
+    // getFilterImgSrc(newActive);
+    // getFilterImgSrc(oldActive);
   }
 
+  function getFilterImgSrc(id) {
+    var src = $(id).prop('src');
+    var newSrc = swapActiveImages(src);
+    $(id).prop('src', newSrc);
+  }
+
+  function swapActiveImages(src) {
+    if(src.indexOf('green') > 0) {
+      src = src.replace('green', 'black');
+    } else if (src.indexOf('black') > 0) {
+      src = src.replace('black', 'green');
+    }
+    return src; 
+  }
 };
 
 NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce', 'YelpFactory'];
