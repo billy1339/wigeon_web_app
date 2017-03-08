@@ -1,18 +1,24 @@
 <div ng-controller='SignInCtrl' id='SignInCtrl'>
-	<h1> hello world </h1> 
+	<div class='left-container'>
+		<img ng-src="assets/images/wigeon-webapp_screenshots.png">
+	</div>
+	<div class='right-container'>
+		<span class='login-span login-text'>Login</span>
 
-	<form name="signInForm" validate>
-		<fieldset class="form-group">
-			<label for="SignInUserEmail">Email</label>
-			<input type="email" id="SignInUserEmail" ng-model="user.email" required>
-			<label for="SignInUserPassword">Passord</label>
-			<input type="password" id="SignInUserPassword" ng-model="user.password" required>
-			<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid">Sign In</button>
-		</fieldset>
-	</form>
-<fb:login-button scope="public_profile,email" onlogin="angular.element(document.getElementById('SignInCtrl')).scope().facebookLogIn()" fb-button>
+		<form name="signInForm" validate>
+			<fieldset class="form-group">
+				<label for="SignInUserEmail">Email</label>
+				<input type="email" id="SignInUserEmail" ng-model="user.email" required>
+				<label for="SignInUserPassword">Passord</label>
+				<input type="password" id="SignInUserPassword" ng-model="user.password" required>
+				<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid">Sign In</button>
+			</fieldset>
+		</form>
+		<span class='login-span or-text'>or</span>
+
+		<fb:login-button scope="public_profile,email" onlogin="angular.element(document.getElementById('SignInCtrl')).scope().facebookLogIn()" fb-button>
 <!-- </fb:login-button> -->
-
+	</div>
 <div id="status">
 </div>
 </div>

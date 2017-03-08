@@ -67,7 +67,7 @@ var appRun = function ($rootScope, $cookies, $window) {
 
   $rootScope.SignOut = function() {
     $cookies.remove("wigeon_user_token");
-    $window.location.href = '/#/';
+    $window.location.href = '/#/sign-in';
   }
 
 	// can we put this somewhere else?? 

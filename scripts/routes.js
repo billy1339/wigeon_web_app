@@ -1,9 +1,6 @@
 var appRoutes = function($routeProvider, $locationProvider) {
   'use strict';
   $routeProvider
-    .when('/', {
-      templateUrl: 'views/home.html'
-    })
     .when('/sign-in', {
       templateUrl: 'views/sign-in.html'
     })
@@ -17,7 +14,7 @@ var appRoutes = function($routeProvider, $locationProvider) {
       templateUrl: 'views/profile.html'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/sign-in'
     });
     
     // $locationProvider.html5Mode(true);
