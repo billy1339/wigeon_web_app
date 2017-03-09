@@ -3,22 +3,26 @@
 		<img class="sign-in-img" ng-src="assets/images/wigeon-webapp_screenshots.png">
 	</div>
 	<div class='right-container'>
-		<span class='login-span login-text'>Log In</span>
+		<div class='right-inner-container'> 
+			<h1 class='login-title'>Log In</h1>
 
-		<fb:login-button scope="public_profile,email" onlogin="angular.element(document.getElementById('SignInCtrl')).scope().facebookLogIn()" class="fb-login-button" data-size="large" fb-button>
-		Login With Facebook
-		</fb:login-button>
-		<form name="signInForm" validate>
-			<div class="form-group">
-				<input type="email" id="SignInUserEmail" ng-model="user.email" placeholder="Email Address" class="form-control" required>
-			</div>
-			<div class="form-group">
-				<input type="password" id="SignInUserPassword" ng-model="user.password" placeholder="Password" class="form-control" required>
-			</div>
-			<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid" class="btn btn-primary">Log In</button>
-		</form>
-		<span class='login-span or-text'>or</span>
+			<fb:login-button scope="public_profile,email" onlogin="angular.element(document.getElementById('SignInCtrl')).scope().facebookLogIn()" class="fb-login-button" data-size="large" fb-button>
+			Log In With Facebook
+			</fb:login-button>
 
+			<p class='login-or-text'>or</p>
+
+
+			<form name="signInForm" validate>
+				<div class="form-group">
+					<input type="email" id="SignInUserEmail" ng-model="user.email" placeholder="Email Address" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<input type="password" id="SignInUserPassword" ng-model="user.password" placeholder="Password" class="form-control" required>
+				</div>
+				<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid" class="btn btn-primary">Log In</button>
+			</form>
+		</div>
 	</div>
 <div id="status">
 </div>

@@ -1,6 +1,6 @@
 #SignInCtrl {
 	.left-container{
-		width: 66%;
+		width: 60%;
 		float: left;
 		.sign-in-img {
 			width: 65%;
@@ -9,8 +9,10 @@
 		}
 	}
 	.right-container{
-		width: 34%; 
+		width: 30%; 
 		float: left; 
+		background-color: #fff;
+		margin:1em; 	
 	}
 
 	form[name='signInForm'] {
@@ -21,5 +23,16 @@
 			display: block;
 			margin: 0 auto; 
 		}
+	}
+	.login-title {
+		padding-bottom: .4em; 
+		border-bottom: 1px solid #ebebeb;
+		font-size: 1.875em;
+		width: 75%;
+		text-align: center; 
+		margin: 0 1em 1.5em;
+	}
+	.right-inner-container{
+		margin: 1em auto; 
 	}
 }
