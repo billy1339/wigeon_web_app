@@ -1,0 +1,25 @@
+#SignInCtrl {
+	.left-container{
+		width: 66%;
+		float: left;
+		.sign-in-img {
+			width: 65%;
+			margin: 10% auto; 
+			display: block; 
+		}
+	}
+	.right-container{
+		width: 34%; 
+		float: left; 
+	}
+
+	form[name='signInForm'] {
+		.form-control {
+			width: 75%; 
+		}
+		input, .btn {
+			display: block;
+			margin: 0 auto; 
+		}
+	}
+}
