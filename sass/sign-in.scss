@@ -35,4 +35,34 @@
 	.right-inner-container{
 		margin: 1em auto; 
 	}
+
+ 	.or-separator {
+	    margin: 5px 0;
+	    line-height: 20px;
+	    height: 20px;
+	    text-align: center;
+	    position: relative;
+
+	    .or {
+    	    display: inline-block;
+		    font-size: 12px;
+		    font-weight: 800;
+		    height: 20px;
+		    line-height: 20px;
+		    padding: 0 15px;
+		    z-index: 2;
+	    }
+
+	    .line {
+    	    position: absolute;
+		    top: 55%;
+		    height: 0;
+		    border-top: 1px solid #E0E0E0;
+		    width: 45%;
+	    }
+	    
+	    .two {
+	    	right: 0;
+	    }
+	}
 }
