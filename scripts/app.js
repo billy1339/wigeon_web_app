@@ -20,7 +20,8 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
   //   '$rootScope'
   // ]);
 var appRun = function ($rootScope, $cookies, $window) {
-	$rootScope.facebookAppId = '872785199480947';
+	$rootScope.SignedIn = IsUserSignedIn(); 
+  $rootScope.facebookAppId = '872785199480947';
 	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
   $rootScope.types = {
     0 : {
@@ -67,7 +68,12 @@ var appRun = function ($rootScope, $cookies, $window) {
 
   $rootScope.SignOut = function() {
     $cookies.remove("wigeon_user_token");
+    $rootScope.SignedIn = undefined; 
     $window.location.href = '/#/sign-in';
+  }
+
+  function IsUserSignedIn() {
+    return $cookies.get("wigeon_user_token");
   }
 
 	// can we put this somewhere else?? 

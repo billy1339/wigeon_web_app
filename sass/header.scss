@@ -40,12 +40,18 @@
 		height:25px;
 		width:25px;
 		border-radius:50%;
-		float: left;
-		margin-top: 18px;
+		margin-right: 5px;
 	}
-	.profile-link {
-		float: left; 
+	.nav-border-left {
+		-webkit-box-shadow: -10px 0px 0px -9px #ccc;
+       	-moz-box-shadow: -10px 0px 0px -9px #ccc;
+        	box-shadow: -10px 0px 0px -9px #ccc;
 	}
+	.nav-login-box {
+		border: 1px solid #ccc;
+    	padding: 1px 5px 1px 5px;
+	}
+
 		// &.hover {
 		// 	color: black; 
 		// } 

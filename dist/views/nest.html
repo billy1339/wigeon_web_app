@@ -1,0 +1,69 @@
+<div ng-controller="NestCtrl as vm" id="NestCtrl">
+	<div class='suggestion-box container'>
+	
+	<div class='filtering left-section'>
+		<div class='sort-buttons'>
+			<ul>
+				<li ng-click="myFilter = null; vm.swapFilterViewName('All Suggestions', 'AllImg')"><span class='filter-bullet active'>&#8226;</span><a><img id="AllImg" src="assets/images/wigeon-webapp_all-green.png" height="20px"><span>All Suggestions</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'WATCH'}}}; vm.swapFilterViewName('Watch', 'WatchImg')"><span class='filter-bullet'>&#8226;</span><a><img id='WatchImg' ng-src="assets/images/wigeon-webapp_watch-black.png" height="20px"><span>Watch</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'LISTEN'}}}; vm.swapFilterViewName('Listen', 'ListenImg')"><span class='filter-bullet'>&#8226;</span><a><img id='ListenImg' ng-src="assets/images/wigeon-webapp_listen-black.png" height="20px"><span>Listen</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'GO'}}}; vm.swapFilterViewName('Go', 'GoImg')"><span class='filter-bullet'>&#8226;</span><a><img id='GoImg' ng-src="assets/images/wigeon-webapp_go-black.png" height="20px"><span>Go</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'READ'}}}; vm.swapFilterViewName('Read', 'ReadImg')"><span class='filter-bullet'>&#8226;</span><a><img id='ReadImg' ng-src="assets/images/wigeon-webapp_read-black.png" height="20px"><span>Read</span></a></li>
+				<li ng-click="myFilter = {inbox_suggestion : {suggestion_type : {title : 'OTHER'}}}; vm.swapFilterViewName('Other', 'OtherImg')"><span class='filter-bullet'>&#8226;</span><a><img id='OtherImg' ng-src="assets/images/wigeon-webapp_other-black.png" height="20px"><span>Other</span></a></li>
+			</ul>	
+		</div>
+	</div>
+	
+
+	<div class='row right-section'>
+			<h3 class="nest-title"> My Nest | {{vm.filterViewName}} </h3>
+			<div class='layout-buttons'>
+				<a ng-click="changeLayout('LIST')" id="LIST-LAYOUT"><i class="fa fa-list fa-2" aria-hidden="true"></i></a>
+				<a ng-click="changeLayout('GRID')" id="GRID-LAYOUT" class="active"><i class="fa fa-th-large" aria-hidden="true"></i></a>
+    			<div class="form-group search-suggestions">
+		            <input type="text" ng-model="search" class="form-control" placeholder="Search...">
+		        </div>
+				<a class='search-icon'><i class="fa fa-search" aria-hidden="true"></i></a>
+			</div>
+			<div class="nest-suggestions">
+				<div ng-repeat="suggestion in suggestions | filter: myFilter | filter: search | limitTo : quantity" class='suggestion-item' ng-click="populateModal(suggestion.inbox_suggestion.suggestion_id)" data-id='{{suggestion.inbox_suggestion.suggestion_id}}'>
+					<div ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="list-view col-xs-12" ng-if="view == 'LIST' ">
+						<div class='suggestion-picture'>
+							<img ng-src='{{suggestion.inbox_suggestion.suggestion_icon_image}}' height='124px'fallback-src="{{suggestion.inbox_suggestion.suggestion_icon_image}}">
+						</div>
+						<div class='suggestion-content-info'>
+							<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:'...'}}</h4>
+							<h6>Category: {{suggestion.inbox_suggestion.suggestion_type.name}}</h6>
+							<h6>Suggested by {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+						</div>
+					</div>
+					<div  class="grid-view col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
+						<div  ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="grid-content-container">
+							<div class='suggestion-content-info'>
+								<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
+							</div>
+							<div class='suggestion-picture' style="background: url('{{'http://52.201.120.48/Wigeon/' + suggestion.inbox_suggestion.suggestion_icon_image}}'), center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title == 'OTHER' ">
+							</div>
+							<div class='suggestion-picture' style="background: url('{{suggestion.inbox_suggestion.suggestion_icon_image}}') center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title != 'OTHER' ">
+							</div>
+							<div class="suggestion-meta-data">
+								<h6>Category: {{suggestion.inbox_suggestion.suggestion_type.name}}</h6>
+								<h6>Suggested by {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<h6>
+							</div>
+						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-if="suggestions.length > quantity">
+			<div class='col-xs-12'>
+				<p class="see-more-suggestions" ng-click="vm.seeMore()"> See More </p>
+			</div>
+		</div>
+	</div>
+
+	<div ng-include="'views/partials/_suggestionModal.html'"></div>
+</div>
+
+
+

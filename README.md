@@ -9,3 +9,8 @@ TO DO:
 * paginate nest 
 * encrypt yelp api access token
 * possible hash library https://www.npmjs.com/package/crypto-js
+
+
+
+NEW
+* change sign-in links to log in

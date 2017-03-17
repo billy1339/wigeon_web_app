@@ -32,6 +32,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
       }
       else {
         setUserCookie(deserialized.user_token, deserialized.user_id);
+        $rootScope.IsSignedIn = true; 
         $window.location.href = '/#/nest';
       }
     });
@@ -54,6 +55,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
         apiSignIn.then(function(result) {
           if(result.success) {
             setUserImgCookie(result.user_img);
+            $rootScope.IsSignedIn = true; 
             $window.location.href = '/#/nest';
           } else {
             alert(result.error_message);
