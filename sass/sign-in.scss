@@ -1,5 +1,8 @@
 #SignInCtrl {
 	.left-container{
+		@media(max-width: 1000px) {
+			display: none; 
+		}
 		width: 60%;
 		float: left;
 		.sign-in-img {
@@ -12,16 +15,25 @@
 		width: 30%; 
 		float: left; 
 		background-color: #fff;
-		margin:1em; 	
+	    margin: 2em 1em 1em 1em;
 	}
 
 	form[name='signInForm'] {
+		margin-bottom: 15%;
 		.form-control {
 			width: 75%; 
 		}
 		input, .btn {
 			display: block;
-			margin: 0 auto; 
+			margin: 0 auto;
+			width: 75%;
+		}
+		.btn {
+			background-color: #00b7af; 
+			margin-top: 25px; 
+		}
+		.btn[disabled='disabled'] {
+			cursor: not-allowed; 
 		}
 	}
 	.login-title {
@@ -30,18 +42,19 @@
 		font-size: 1.875em;
 		width: 75%;
 		text-align: center; 
-		margin: 0 1em 1.5em;
+		margin: 1em 2em 1.5em;
 	}
 	.right-inner-container{
 		margin: 1em auto; 
 	}
 
  	.or-separator {
-	    margin: 5px 0;
+	    margin: 40px auto;
 	    line-height: 20px;
 	    height: 20px;
 	    text-align: center;
 	    position: relative;
+	    width: 75%;
 
 	    .or {
     	    display: inline-block;
@@ -60,7 +73,7 @@
 		    border-top: 1px solid #E0E0E0;
 		    width: 45%;
 	    }
-	    
+
 	    .two {
 	    	right: 0;
 	    }
