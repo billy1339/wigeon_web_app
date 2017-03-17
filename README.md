@@ -14,3 +14,4 @@ TO DO:
 
 NEW
 * change sign-in links to log in
+* nav bar make nav bar right when you sign in/sign out.
