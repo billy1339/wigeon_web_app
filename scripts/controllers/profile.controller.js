@@ -1,11 +1,15 @@
 var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $rootScope, $sce, YelpFactory) {
   'use strict'
+  const vm = this; 
 
   getUserInfo();
   initListeners();
 
   $scope.view = "GRID";
   $scope.quantity = 20; 
+  vm.filterViewName = "All Suggestions";
+
+
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
@@ -87,12 +91,19 @@ function PopulateSuggestions() {
         } 
       });
 
-      $(".search-icon .icon").on("click", function() {
-        $(".search-icon").hide();
+         $(".search-icon").on("click", function() {
         $(".search-suggestions").show("slow");
       });
 
     });
+  }
+    function swapFilterViewName(text, id) {
+    vm.filterViewName = text; 
+    // var newActive = '#'+id;
+    // var oldActive = $('.filter-bullet.active').siblings('a').children('img').prop('id');
+    // debugger;
+    // getFilterImgSrc(newActive);
+    // getFilterImgSrc(oldActive);
   }
 $scope.getProfileImg = function(img) {
   if (img !== undefined) {
