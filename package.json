@@ -2,10 +2,6 @@
   "name": "WigeonWebApp",
   "version": "1.0.0",
   "description": "This is the splash page for Wigeon.",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Wigeon/splashPage.git"
@@ -48,5 +44,8 @@
     "gulp-ruby-sass": "^2.0.5",
     "gulp-sass": "^2.1.0",
     "gulp-uglify": "^1.4.2"
+  }, 
+  "scripts":{
+    "start": "node server.js"
   }
 }

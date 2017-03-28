@@ -102,8 +102,8 @@
         res.sendFile('dist/index.html', {root: __dirname}); // load the single view file (angular will handle the page changes on the front-end)
 	});
 
-    app.listen(4000);
-    console.log("App listening on port 4000");
+    app.listen(8081);
+    console.log("App listening on port 8081");
 
 
 
