@@ -23,6 +23,12 @@
 	    	float: none; 
 	    }
 	}
+	.fb-no-jump {
+	    width: 100%;
+	    height: 25px;
+	    overflow: hidden;
+	    display: block !important;
+	}
 
 	form[name='signInForm'] {
 		margin-bottom: 15%;
@@ -38,8 +44,8 @@
 			background-color: #00b7af; 
 			margin-top: 25px; 
 		}
-		.btn[disabled='disabled'] {
-			cursor: not-allowed; 
+		.btn[disabled] {
+			cursor: not-allowed !important; 
 		}
 	}
 	.login-title {

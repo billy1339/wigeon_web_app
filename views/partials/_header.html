@@ -1,15 +1,15 @@
-<nav class="navbar navbar-light bg-faded" id="Header">
+<nav class="navbar navbar-inverted bg-faded" id="Header">
     <div class="navbar-header">
+    <a class="navbar-brand" href="#/nest"><img src="assets/images/wigeon-webapp_wigeon-logo.png"></a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-    <a class="navbar-brand" href="#/nest"><img src="assets/images/wigeon-webapp_wigeon-logo.png"></a>
     </div>
   <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav">
-      <li ng-if="$root.SignedIn !== undefined" class="nav-item active">
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-if="$root.SignedIn !== undefined" class="nav-item">
         <a class="nav-link" href="#/nest">My Nest</a>
       </li>
       <li ng-if="$root.SignedIn !== undefined" class="nav-item">
@@ -18,14 +18,14 @@
       <li ng-if="$root.SignedIn !== undefined" class="nav-item">
         <a class="nav-link profile-link nav-border-left" href="#/profile"> <img ng-src="{{$root.userImg}}" class="user-profile-img"> View Profile</a>
       </li>
-        <li ng-if="$root.SignedIn === undefined" class="nav-item active">
+        <li ng-if="$root.SignedIn === undefined" class="nav-item">
         <a class="nav-link" href="http://www.wigeon.co">Home</a>
       </li>
       <li ng-if="$root.SignedIn === undefined" class="nav-item">
         <a class="nav-link" href="http://blog.wigeon.co" ng-click="$root.SignOut()">Blog</a>
       </li>
       <li ng-if="$root.SignedIn === undefined" class="nav-item">
-        <a class="nav-link nav-border-left" href="#/sign-in"><p class='nav-login-box'>Log In</p></a>
+        <a class="nav-link" href="#/sign-in"><p class='nav-login-box'>Log In</p></a>
       </li>
 
     </ul>
