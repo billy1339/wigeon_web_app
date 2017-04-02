@@ -13,7 +13,7 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $ro
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
-  		$window.location.href = '/#/';
+  		$window.location.href = '/sign-in';
   	}
   	getUserProfile();
     PopulateSuggestions();

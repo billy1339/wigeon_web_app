@@ -6,7 +6,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
   function getUserInfo() {
     var user_token = $cookies.get("wigeon_user_token");
     if (user_token) {
-      $window.location.href = '/#/nest';
+      $window.location.href = '/nest';
     } 
   }
 

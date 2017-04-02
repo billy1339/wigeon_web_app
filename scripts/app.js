@@ -1,24 +1,5 @@
 angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
-// .config(function($locationProvider) {
-//    if(window.history && window.history.pushState){
-// 	   $locationProvider.html5Mode({
-// 		   enabled: true,
-// 		   requireBase: false
-// 		});
-//    }
-// });	
-// .config([
-//     '$httpProvider',
-//     function($httpProvider) {
-//       // Expose XHR requests to server
-//       $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-//     }
-//   ]);
 
-
-  // .run([
-  //   '$rootScope'
-  // ]);
 var appRun = function ($rootScope, $cookies, $window) {
 	$rootScope.SignedIn = SignedIn(); 
   $rootScope.facebookAppId = '872785199480947';
@@ -69,7 +50,7 @@ var appRun = function ($rootScope, $cookies, $window) {
   $rootScope.SignOut = function() {
     $cookies.remove("wigeon_user_token");
     $rootScope.IsUserSignedIn(); 
-    $window.location.href = '/#/sign-in';
+    $window.location.href = '/sign-in';
   }
 
   $rootScope.IsUserSignedIn = function() {

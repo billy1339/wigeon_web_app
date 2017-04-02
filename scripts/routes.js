@@ -17,7 +17,7 @@ var appRoutes = function($routeProvider, $locationProvider) {
       redirectTo: '/sign-in'
     });
     
-    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 };
 appRoutes.$inject = ['$routeProvider', '$locationProvider'];
 angular.module('WigeonApp').config(appRoutes);
