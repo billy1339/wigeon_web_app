@@ -89,6 +89,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
       $(".search-icon").on("click", function() {
         $(".search-suggestions").show("slow");
       });
+      $(".close-search").on("click", function() {
+        $(".search-suggestions").hide("slow");
+      });
 
       $('.sort-buttons li').on('click', function() {
         var old = $('.sort-buttons span.active');
@@ -99,6 +102,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
         var newId = '#' + $('.sort-buttons span.active').siblings('a').children('img').prop('id');
         getFilterImgSrc(newId);
       });
+
+      $('.profile-link').removeClass('active');
+      $('.nest-header-item').addClass('active');
 
     });
   }

@@ -1,4 +1,4 @@
-<div ng-controller='SignInCtrl' id='SignInCtrl'>
+<div ng-controller='SignInCtrl as vm' id='SignInCtrl'>
 	<div class='left-container'>
 		<img class="sign-in-img" ng-src="assets/images/wigeon-webapp_screenshots.png">
 	</div>
@@ -23,8 +23,10 @@
 				</div>
 				<button type="submit" ng-click="UserLogin(user)" ng-disabled="signInForm.$invalid" class="btn btn-primary">Log In</button>
 			</form>
+			<a class='forgot-password' data-toggle="modal" data-target="#ForgotPasswordModal">Forgot Your Password?</a>
 		</div>
 	</div>
 <div id="status">
 </div>
+<div ng-include="'views/partials/_forgotPasswordModal.html'"></div>
 </div>

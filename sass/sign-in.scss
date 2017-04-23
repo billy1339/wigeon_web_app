@@ -90,4 +90,46 @@
 	    	right: 0;
 	    }
 	}
+	.forgot-password {
+		text-decoration: underline; 
+		color: #000; 
+		font-weight: 500; 
+		display: block;
+		text-align: center;
+		cursor: pointer; 
+		padding-bottom: 10px; 
+	}
+	#ForgotPasswordModal {
+		.modal-title {
+		    text-align: center;
+    		font-size: 18px;
+		}
+		.modal-body {
+		    margin: 1em 5em 1em 5em;
+		}
+		p {
+			text-align: center;
+			padding-bottom: 20px; 
+		}
+		.close {
+			position: absolute;
+			top: 2px;
+			right: 4px;  
+		}
+		form[name="forgotPasswordForm"] {
+			.btn {
+			    background-color: #00b7af;
+			    display: block;
+			    margin:0 auto; 
+			}
+			.input {
+				width: 75%;
+				margin: 0 auto; 
+			}
+		}
+		.password-success {
+			color:#00b7af; 
+		}
+	}
+
 }

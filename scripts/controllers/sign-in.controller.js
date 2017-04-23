@@ -1,6 +1,9 @@
 var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookFactory, $rootScope, $q) {
   'use strict'
 
+  const vm = this; 
+  vm.forgotPassword = forgotPassword; 
+  vm.forgotPasswordSuccessmessage = "";
   getUserInfo();
 
   function getUserInfo() {
@@ -56,7 +59,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
           if(result.success) {
             setUserImgCookie(result.user_img);
             $rootScope.IsUserSignedIn(); 
-            $window.location.href = '/#/nest';
+            $window.location.href = '/nest';
           } else {
             alert(result.error_message);
           }
@@ -77,6 +80,7 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     }
   }
 
+
   function WigeonFacebookSignIn(data) {
     var deferred = $q.defer();
     $http.post('/api/facebook-sign-in', data).success(function(response){
@@ -91,6 +95,17 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
     var exp = new Date(today.getFullYear(), today.getMonth()+3, today.getDate());
     $cookies.put('wigeon_user_img', url, { 'expires' : exp })
   };
+
+  function forgotPassword(email){
+    var data = {
+      email: email
+    }
+    $http.post("/api/forgot-password", data).success(function(response) {
+      var deserialized = JSON.parse(response);
+      $(".password-recover-items").hide();
+      vm.forgotPasswordSuccessmessage = deserialized.success_message; 
+    });
+  }
 };
 
 SignInCtrl.$inject = ['$scope', '$http', '$cookies', '$location', '$window', 'FacebookFactory', '$rootScope', '$q'];

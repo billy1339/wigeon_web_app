@@ -10,13 +10,14 @@
   <div class="collapse navbar-collapse" id="myNavbar">
     <ul class="nav navbar-nav navbar-right">
       <li ng-if="$root.SignedIn !== undefined" class="nav-item">
-        <a class="nav-link" href="/nest">My Nest</a>
+        <a class="nav-link nest-header-item" href="/nest">My Nest</a>
+      </li>
+      
+      <li ng-if="$root.SignedIn !== undefined" class="nav-item">
+        <a class="nav-link profile-link" href="/profile">View Profile <img ng-src="{{$root.userImg}}" class="user-profile-img"></a>
       </li>
       <li ng-if="$root.SignedIn !== undefined" class="nav-item">
-        <a class="nav-link" href="#" ng-click="$root.SignOut()">Sign Out</a>
-      </li>
-      <li ng-if="$root.SignedIn !== undefined" class="nav-item">
-        <a class="nav-link profile-link nav-border-left" href="/profile"> <img ng-src="{{$root.userImg}}" class="user-profile-img"> View Profile</a>
+        <a class="nav-link nav-border-left" href="#" ng-click="$root.SignOut()">Sign Out</a>
       </li>
         <li ng-if="$root.SignedIn === undefined" class="nav-item">
         <a class="nav-link" href="http://www.wigeon.co">Home</a>

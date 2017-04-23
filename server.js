@@ -12,7 +12,8 @@
 	var WigeonConsts = require('./Server/wigeon-consts.js').WigeonConsts;
 	var Yelp = require('./Server/yelp.js').Yelp;
 	var ProfileService = require('./Server/profile.js').ProfileService;
-
+	var config = require('./Server/config.json');
+	var querystring = require('querystring');
   	app.use(express.static(__dirname + '/dist'));     // set the static files location /public/img will be /img for users
 	app.use(cookieParser());
 
@@ -72,6 +73,8 @@
 
 
     app.get('/api/profile', function(req, res) {
+	    debugger; 
+	    console.log('asdf');
         var cookie = req.cookies.wigeon_user_token;
         var profile = new ProfileService();
         profile.getProfile(cookie, function(error, response) {
@@ -95,6 +98,12 @@
 	    })
 	});
 
+	app.post('/api/forgot-password', function(req, res) {
+		var passwordSend = new SignIn();
+		passwordSend.forgotPassword(req.body.email, function(error, response, body) {
+			res.json(response);
+		});
+	});
 
     // listen (start app with node server.js) ======================================
     

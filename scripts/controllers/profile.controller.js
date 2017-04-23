@@ -8,6 +8,7 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $ro
   $scope.view = "GRID";
   $scope.quantity = 20; 
   vm.filterViewName = "All Suggestions";
+  vm.seeMore = seeMore;
 
 
   function getUserInfo() {
@@ -23,7 +24,11 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $ro
 function getUserProfile() {
   ProfileService.getProfile().then(
     function(response) {
-      $scope.profile = JSON.parse(response);
+      var parced = JSON.parse(response);
+      if($rootScope.userImg == undefined) {
+        $rootScope.userImg = $scope.getProfileImg(parced.user_profile_image); 
+      }
+      $scope.profile = parced;
     });
 }
 
@@ -91,13 +96,30 @@ function PopulateSuggestions() {
         } 
       });
 
-         $(".search-icon").on("click", function() {
+      $(".search-icon").on("click", function() {
         $(".search-suggestions").show("slow");
       });
+      $(".close-search").on("click", function() {
+        $(".search-suggestions").hide("slow");
+      });
+
+      $('.sort-buttons li').on('click', function() {
+        var old = $('.sort-buttons span.active');
+        var oldId = '#' + $('.sort-buttons span.active').siblings('a').children('img').prop('id');
+        getFilterImgSrc(oldId);
+        old.removeClass('active');
+        $(this).children('.filter-bullet').addClass('active');
+        var newId = '#' + $('.sort-buttons span.active').siblings('a').children('img').prop('id');
+        getFilterImgSrc(newId);
+      });
+
+      $('.nest-header-item').removeClass('active');
+      $('.profile-link').addClass('active');
+
 
     });
   }
-    function swapFilterViewName(text, id) {
+  function swapFilterViewName(text, id) {
     vm.filterViewName = text; 
     // var newActive = '#'+id;
     // var oldActive = $('.filter-bullet.active').siblings('a').children('img').prop('id');
@@ -114,13 +136,28 @@ $scope.getProfileImg = function(img) {
     }
   return;   
 }
-  $scope.seeMore = function() {
+  function seeMore() {
     $scope.quantity += 20; 
   }
 
   $scope.SignOut = function() {
     $cookies.remove("wigeon_user_token");
-    $window.location.href = '/#/';
+    $window.location.href = '/sign-in';
+  }
+
+    function getFilterImgSrc(id) {
+    var src = $(id).prop('src');
+    var newSrc = swapActiveImages(src);
+    $(id).prop('src', newSrc);
+  }
+
+  function swapActiveImages(src) {
+    if(src.indexOf('green') > 0) {
+      src = src.replace('green', 'black');
+    } else if (src.indexOf('black') > 0) {
+      src = src.replace('black', 'green');
+    }
+    return src; 
   }
 
  }

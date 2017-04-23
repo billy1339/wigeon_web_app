@@ -15,8 +15,8 @@
    } 
 }    
 
-h1,h2,h3,h4,h5,h6,a,p {
-	font-family: proxima-nova;
+* {
+	font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 body {
 	background-color: #F4F4F6;
@@ -68,7 +68,9 @@ body {
 }
 .nest-title {
 	padding-left: 15px; 
-	width: 50%; 
+	width: 50%;
+	font-weight: 600; 
+	font-size: 22px;
 	@media(max-width: 540px) {
 		font-size: 20px; 
 	}
@@ -209,7 +211,7 @@ body {
 }
 
 
-#NestCtrl {
+// #NestCtrl {
 	.container {
 		margin: 0;
 		padding: 0;
@@ -296,6 +298,9 @@ body {
 			position: absolute;
 			bottom: 0;
 			left: 10px;
+			h6 {
+				font-weight: 400;
+			}
 		}
 		.grid-content-container {
 			width:100%;
@@ -311,8 +316,9 @@ body {
 			}
 
 			.nest-suggestion-title {
-				font-weight: 600; 
-				margin-top: 10px; 
+				font-weight: 500; 
+				margin-top: 10px;
+				font-size: 16px; 
 			}
 			.suggestion-picture {
 				height: 125px; 
@@ -345,6 +351,13 @@ body {
     	float: right; 
 	    margin: 0 5px -27px 5px;	
 	    display: none; 
+	    i {
+	    	position: absolute; 
+	    	font-size: inherit;
+	    	top: 0; 
+	    	right: 97px; 
+	    	cursor: pointer; 
+	    }
 	    input {
 	    	height: 28px; 
 	    }
@@ -367,4 +380,4 @@ body {
 	    }
 	}
 
-}
+// }
