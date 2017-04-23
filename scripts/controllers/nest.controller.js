@@ -12,7 +12,9 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   vm.filterViewName = "All Suggestions";
   vm.swapFilterViewName = swapFilterViewName;
   vm.seeMore = seeMore;
-
+  vm.isVideo = false; 
+  vm.player; 
+  
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
@@ -43,6 +45,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
         $("#SuggestionDetailModal").modal();
       });
     } else {
+      vm.isVideo = (sug.suggestion_type.title === "WATCH");
       $("#SuggestionDetailModal").modal();
     };
   }
@@ -60,7 +63,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   }
 
   $scope.getIframeSrc = function(src) {
-    return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src);
+    return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src + "?enablejsapi=1");
   };
 
   $scope.returnTrustedSrc = function(src) {
@@ -83,7 +86,20 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
         var audio = $("#MusicPreview")[0];
         if (audio !== undefined) {
           audio.pause(); 
-        } 
+        } else if(vm.isVideo) {
+          vm.player.destroy(); 
+        }
+      });
+
+      $("#NestCtrl").on('shown.bs.modal', '#SuggestionDetailModal', function () {
+        if(vm.isVideo) {
+            vm.player = new YT.Player('ytplayer', {
+              height: '390',
+              width: '100%',
+              videoId: $scope.suggestionModelInfo.suggestion_source_item_id,
+              events: {}
+            });
+        }
       });
 
       $(".search-icon").on("click", function() {

@@ -9,7 +9,8 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $ro
   $scope.quantity = 20; 
   vm.filterViewName = "All Suggestions";
   vm.seeMore = seeMore;
-
+  vm.isVideo = false; 
+  vm.player; 
 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
@@ -52,6 +53,7 @@ function PopulateSuggestions() {
         $("#SuggestionDetailModal").modal();
       });
     } else {
+      vm.isVideo = (sug.suggestion_type.title === "WATCH");
       $("#SuggestionDetailModal").modal();
     };
   }
@@ -69,7 +71,7 @@ function PopulateSuggestions() {
   }
 
   $scope.getIframeSrc = function(src) {
-    return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src);
+    return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + src + "?enablejsapi=1");
   };
 
   $scope.returnTrustedSrc = function(src) {
@@ -93,7 +95,20 @@ function PopulateSuggestions() {
         var audio = $("#MusicPreview")[0];
         if (audio !== undefined) {
           audio.pause(); 
-        } 
+        } else if(vm.isVideo) {
+          vm.player.destroy(); 
+        }
+      });
+
+      $("#ProfileCtrl").on('shown.bs.modal', '#SuggestionDetailModal', function () {
+        if(vm.isVideo) {
+            vm.player = new YT.Player('ytplayer', {
+              height: '390',
+              width: '100%',
+              videoId: $scope.suggestionModelInfo.suggestion_source_item_id,
+              events: {}
+            });
+        }
       });
 
       $(".search-icon").on("click", function() {
