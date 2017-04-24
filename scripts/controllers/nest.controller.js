@@ -74,6 +74,8 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   $scope.changeLayout = function(layout) {
     $(".layout-buttons a").each(function() {
       $(this).removeClass("active");
+      var img = $(this).children('img');
+      getFilterImgSrc(img);
     });
     $("#"+layout+"-LAYOUT").addClass("active");
     $scope.view = layout;
