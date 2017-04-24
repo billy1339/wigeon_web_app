@@ -43,6 +43,10 @@ body {
 		h6 {
 			margin-bottom: 2px; 
 		}
+		span {
+			float: right;
+			opacity: 0.5;
+		}
 	}
 
 	.suggestion-content-info {
@@ -298,8 +302,14 @@ body {
 			position: absolute;
 			bottom: 0;
 			left: 10px;
+		    padding-right: 12px;
+		    width: 100%; 
 			h6 {
 				font-weight: 400;
+			}
+			span {
+			    float: right; 
+    			opacity: 0.5;
 			}
 		}
 		.grid-content-container {
@@ -378,6 +388,12 @@ body {
 		@media(max-width: 625px) {
 	    	display: block;
 	    }
+	}
+	.sug-time-diff {
+	    opacity: 0.5;
+	    font-size: 13px;
+	    position: absolute;
+	    right: 15px;
 	}
 
 // }

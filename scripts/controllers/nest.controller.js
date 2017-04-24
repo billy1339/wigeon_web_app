@@ -14,7 +14,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   vm.seeMore = seeMore;
   vm.isVideo = false; 
   vm.player; 
-  
+
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
   	if (!user_token) {
@@ -156,6 +156,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     }
     return src; 
   }
+
 };
 
 NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce', 'YelpFactory'];

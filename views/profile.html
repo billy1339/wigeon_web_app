@@ -43,7 +43,7 @@
 						</div>
 						<div class='suggestion-content-info'>
 							<h4 class='nest-suggestion-title'>{{suggestion.feed_suggestion.suggestion_title | cut:true:75:'...'}}</h4>
-							<h6>Category: {{suggestion.feed_suggestion.suggestion_type.name}}</h6>
+							<h6 style="width:100%;">Category: {{suggestion.feed_suggestion.suggestion_type.name}}<span>{{$root.calculateTimeDifference(suggestion.feed_suggestion.suggestion_creation_epoch)}}</span></h6>
 						</div>
 					</div>
 					<div  class="grid-view col-md-4 col-sm-6 col-xs-12" ng-if="view == 'GRID' ">
@@ -56,7 +56,7 @@
 							<div class='suggestion-picture' style="background: url('{{suggestion.feed_suggestion.suggestion_icon_image}}') center no-repeat" ng-if="suggestion.feed_suggestion.suggestion_type.title != 'OTHER' ">
 							</div>
 							<div class="suggestion-meta-data">
-								<h6>Category: {{suggestion.feed_suggestion.suggestion_type.name}}</h6>
+								<h6>Category: {{suggestion.feed_suggestion.suggestion_type.name}} <span>{{$root.calculateTimeDifference(suggestion.feed_suggestion.suggestion_creation_epoch)}}</span></h6>
 							</div>
 						</div>
 					</div>  

@@ -63,6 +63,21 @@ var appRun = function ($rootScope, $cookies, $window) {
     return result;
   }
 
+  $rootScope.calculateTimeDifference = function(createdDate) {
+    var date1 = new Date(createdDate * 1000);
+    var date2 = new Date();
+    var dayDiff = parseInt((date2 - date1) / (1000 * 60 * 60 * 24));
+    if(dayDiff >= 1) {
+      return dayDiff + "d ago";
+    } else {
+      var hourDiff = parseInt((date2 - date1) / (1000 * 60 * 60));
+      if(hourDiff === 1 || hourDiff === 0) {
+        return "1h ago";
+      }
+      return hourDiff + "h ago";
+    }
+  }
+
 	// can we put this somewhere else?? 
     window.fbAsyncInit = function () {
         FB.init({
