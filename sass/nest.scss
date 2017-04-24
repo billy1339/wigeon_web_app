@@ -104,10 +104,12 @@ body {
 	
 		li {
 			cursor: pointer; 
+			position:relative;
+			padding-bottom: 5px; 
 			.filter-bullet {
 				color: #F4F4F6; 
-				padding-top:5px;
-				padding-right:5px; 
+				position: absolute; 
+				left:-10px; 
 				font-size:1.4em;
 				&.active {
 					color: #00b7af !important; 
