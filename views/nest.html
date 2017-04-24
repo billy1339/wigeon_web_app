@@ -44,7 +44,7 @@
 					<div  class="grid-view col-lg-4 col-md-4 col-sm-6" ng-if="view == 'GRID' ">
 						<div  ng-class="suggestion.inbox_suggestion.suggestion_type.title" class="grid-content-container">
 							<div class='suggestion-content-info'>
-								<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
+								<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:32:'...'}}</h4>
 							</div>
 							<div class='suggestion-picture' style="background: url('{{(suggestion.inbox_suggestion.suggestion_icon_image.length > 0 ? 'http://52.201.120.48/Wigeon/' + suggestion.inbox_suggestion.suggestion_icon_image : 'http://i.imgur.com/hfM1J8s.png')}}'), center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title == 'OTHER' ">
 							</div>

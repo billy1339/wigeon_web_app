@@ -17,12 +17,13 @@
 
 	<div class='row right-section'>
 			<div class='user-info'>
-				<img src="{{getProfileImg(profile.user_profile_image)}}" onerror"">
+				<img src="{{vm.getProfileImg(profile.user_profile_image)}}" onerror"">
 				<h3 class="user-name">{{profile.user_full_name}}</h3>
+				<p class="user-bio">{{profile.user_bio}}</p>
 <!-- 				<div ng-class='total-followers'>Total Followers: {{profile.user_num_followers}}</div>
 				<div class='total-following'>Total Following: {{profile.user_num_following}}</div>
  -->			</div>
-
+			<h3 class="nest-title"> My Sent Suggestions</h3>
 			<div class='layout-buttons'>
 				<a ng-click="changeLayout('LIST')" id="LIST-LAYOUT"><img height="28px" width="28px" src="/assets/images/wigeon-webapp_lines-black.png"/></a>
 				<a ng-click="changeLayout('GRID')" id="GRID-LAYOUT" class="active"><img height="28px" width="28px" src="/assets/images/wigeon-webapp_squares-green.png"/></a>

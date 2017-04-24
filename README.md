@@ -6,5 +6,7 @@ TO DO:
 * loading indicator for videos
 * move sign in w/ email to server
 * move sign up to server
+* default profile image
+* fallback images
 
 http://staging-wigeon-webapp.us-east-1.elasticbeanstalk.com/

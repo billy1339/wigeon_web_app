@@ -14,6 +14,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   vm.seeMore = seeMore;
   vm.isVideo = false; 
   vm.player; 
+  vm.getProfileImg = getProfileImg; 
 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
@@ -37,10 +38,12 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   $scope.populateModal = function(id) {
     var sug = findSuggestion(id);
+    console.log(sug)
     $scope.suggestionModelInfo = sug;
     if (sug.suggestion_type.title === "GO") {
       var promise = YelpFactory.fetch(sug.suggestion_source_item_id);
       promise.then(function(response) {
+        console.log(response);
         $scope.yelp = response; 
         $("#SuggestionDetailModal").modal();
       });
@@ -157,6 +160,16 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
       src = src.replace('black', 'green');
     }
     return src; 
+  }
+
+  function getProfileImg(img) {
+    if (img !== undefined) {
+        if (img.indexOf('http') === -1){
+          return "http://52.201.120.48/Wigeon/" + img;
+         }
+        return img;
+      }
+    return;   
   }
 
 };

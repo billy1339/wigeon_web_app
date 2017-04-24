@@ -4,6 +4,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">{{this.suggestionModelInfo.suggestion_title}}</h4>
+        <p class="modal-suggested-by">Suggested By {{this.suggestionModelInfo.suggestion_user.user_full_name}}
         <span class="sug-time-diff">{{$root.calculateTimeDifference(this.suggestionModelInfo.suggestion_creation_epoch)}}</span>
       </div>
       <div class="modal-body">
@@ -25,7 +26,12 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="suggested-to" ng-repeat="user in this.suggestionModelInfo.suggestion_users">
+          <div class="suggested-to-user">
+            <img ng-src="{{vm.getProfileImg(user.user_profile_image)}}" onerror="this.src='https://thumb9.shutterstock.com/display_pic_with_logo/3038285/362901365/stock-vector-male-default-avatar-profile-gray-picture-isolated-on-white-background-for-your-design-vector-362901365.jpg'"/>
+            <p>{{user.user_full_name}}</p>
+          </div>
+        </div>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

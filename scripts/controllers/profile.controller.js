@@ -11,6 +11,7 @@ var ProfileCtrl = function($scope, $http, $cookies, $window, ProfileService, $ro
   vm.seeMore = seeMore;
   vm.isVideo = false; 
   vm.player; 
+  vm.getProfileImg = getProfileImg;
 
   function getUserInfo() {
   	var user_token = $cookies.get("wigeon_user_token");
@@ -27,7 +28,7 @@ function getUserProfile() {
     function(response) {
       var parced = JSON.parse(response);
       if($rootScope.userImg == undefined) {
-        $rootScope.userImg = $scope.getProfileImg(parced.user_profile_image); 
+        $rootScope.userImg = vm.getProfileImg(parced.user_profile_image); 
       }
       $scope.profile = parced;
     });
@@ -144,7 +145,7 @@ function PopulateSuggestions() {
     // getFilterImgSrc(newActive);
     // getFilterImgSrc(oldActive);
   }
-$scope.getProfileImg = function(img) {
+  function getProfileImg(img) {
   if (img !== undefined) {
       if (img.indexOf('http') === -1){
         return "http://52.201.120.48/Wigeon/" + img;

@@ -1,17 +1,23 @@
 .user-info {
     // display: inline;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 75px;
     padding-left: 15px;
+    width: 100%; 
     // padding-bottom: 20px;
 .user-name {
 	display: inline;
 }
-   img {
+.user-bio {
+	padding-top: 5px; 
+}
+img {
    	display: inline;
    	border-radius: 30%;
    	// padding-top: 20px;
-   	height: 50px;
+   	height: 75px;
+    float:left;
+    padding-right: 10px; 
    } 
 }    
 
@@ -391,12 +397,7 @@ body {
 	    	display: block;
 	    }
 	}
-	.sug-time-diff {
-	    opacity: 0.5;
-	    font-size: 13px;
-	    position: absolute;
-	    right: 15px;
-	}
+
 	audio::-internal-media-controls-download-button {
     	display:none;
 	}
@@ -405,6 +406,97 @@ body {
 	}
 	audio::-webkit-media-controls-panel {
 	    width: calc(100% + 30px); /* Adjust as needed */
+	}
+
+	// suggestion modal stuff 
+	#SuggestionDetailModal {
+		.modal-suggested-by {
+			padding-top: 10px; 
+			opacity: 0.5;
+		}
+		.get-item {
+			padding-top: 10px;
+			font-weight: 500;
+			font-size: 14px;  
+		}
+
+		.sug-time-diff {
+		    opacity: 0.5;
+		    font-size: 13px;
+		    position: absolute;
+		    right: 15px;
+		}
+		.watch-modal {
+			.video-container {
+				padding: 0; 
+			}
+			.modal {
+				.container {
+					width: 100%;
+				}
+			}
+
+
+			.col-xs-6 {
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+		.listen-modal {
+			h5 {
+				text-align: center; 
+			}
+			#MusicPreview {
+				margin-bottom: 10px; 
+			}
+			.modal {
+				.container {
+					width: 100%;
+				}
+			}
+
+
+			.col-xs-6 {
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+		.go-modal {
+			.map {
+				float: right; 
+			}
+			.info {
+				float: left;
+			}
+			.go-sug-info {
+				display: table-row;
+
+			}
+		}
+		.suggested-to {
+			.suggested-to-user {
+				display: inline-block;
+				float: left; 
+				padding:5px; 
+				img {
+					border-radius: 50%;
+					height: 45px;
+					width: 45px; 
+					margin: 0 auto;
+    				display: block;
+				}
+				p {
+					font-size: 10px;
+    				padding-top: 2px;
+				}
+			}	
+		}
+		
+	}
+
+	.center {
+		margin: 0 auto;
+    	display: block;
 	}
 
 // }
