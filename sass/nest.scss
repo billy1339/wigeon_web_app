@@ -410,6 +410,11 @@ body {
 
 	// suggestion modal stuff 
 	#SuggestionDetailModal {
+		@media(max-width: 415px) {
+			.modal-dialog {
+				margin-right: 26px; 
+			}
+		}
 		.modal-suggested-by {
 			padding-top: 10px; 
 			opacity: 0.5;
@@ -428,7 +433,10 @@ body {
 		}
 		.watch-modal {
 			.video-container {
-				padding: 0; 
+				padding: 0;
+				@media (min-width: 769px){
+					width: 105% !important;
+				}
 			}
 			.modal {
 				.container {
@@ -438,7 +446,10 @@ body {
 
 
 			.col-xs-6 {
-				max-width: 100%;
+				@media (max-width: 769px){
+					max-width: 100%;
+
+				}
 				width: 100%;
 			}
 		}
@@ -463,7 +474,12 @@ body {
 		}
 		.go-modal {
 			.map {
-				float: right; 
+				float: right;
+				width: 100%;
+				img {
+					width: 100%;
+					padding-top: 20px;
+				}
 			}
 			.info {
 				float: left;
@@ -471,6 +487,35 @@ body {
 			.go-sug-info {
 				display: table-row;
 
+			}
+			// .yelp-image {
+			// 	background: #F5F5F1; 
+			// }
+		}
+		.read-modal {
+			.read-sug-image {
+				float: left;
+				margin-right: 20px;
+			}
+			.read-modal-about {
+				width: 100%;
+				float: left; 
+				padding-top: 10px; 
+			}
+			.get-item {
+				padding-top: 0; 
+			}
+		}
+		.other-modal {
+			img {
+				display: block; 
+				margin: 0 auto; 
+			}
+			.link-text {
+				text-decoration: underline;
+				font-weight: 600;
+				cursor: pointer; 
+				text-align: center; 	
 			}
 		}
 		.suggested-to {

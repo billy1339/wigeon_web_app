@@ -148,7 +148,7 @@ function PopulateSuggestions() {
   function getProfileImg(img) {
   if (img !== undefined) {
       if (img.indexOf('http') === -1){
-        return "http://52.201.120.48/Wigeon/" + img;
+        return $rootScope.baseApiUrl + img;
        }
       return img;
     }

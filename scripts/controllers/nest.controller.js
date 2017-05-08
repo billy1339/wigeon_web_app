@@ -38,12 +38,10 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
 
   $scope.populateModal = function(id) {
     var sug = findSuggestion(id);
-    console.log(sug)
     $scope.suggestionModelInfo = sug;
     if (sug.suggestion_type.title === "GO") {
       var promise = YelpFactory.fetch(sug.suggestion_source_item_id);
       promise.then(function(response) {
-        console.log(response);
         $scope.yelp = response; 
         $("#SuggestionDetailModal").modal();
       });
@@ -165,7 +163,7 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
   function getProfileImg(img) {
     if (img !== undefined) {
         if (img.indexOf('http') === -1){
-          return "http://52.201.120.48/Wigeon/" + img;
+          return $rootScope.baseApiUrl + img;
          }
         return img;
       }

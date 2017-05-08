@@ -38,6 +38,28 @@
 	    })
 	});
 
+	app.post('/api/email-sign-in', function(req, res) {
+		var signInService = new SignIn();
+		signInService.emailSignIn(req.body, function(error, response, body) {
+			var result = JSON.parse(response);
+			
+			if(result.error_name !== undefined) {
+				res.json({
+					success: false,
+					error_message: result.error_message
+				});
+			} else {
+				var userImg = result.user_profile_image != undefined ? config.requestUrl + result.user_profile_image : undefined;
+				var cookieValue = signInService.encryptUserCookie(result.user_token, result.user_id)
+    			res.cookie('wigeon_user_token', cookieValue.toString(), { maxAge: 7776000000});
+				res.json({
+					success: true,
+					user_img: userImg
+				});
+			} 
+		});
+	});
+
 	app.post('/api/facebook-sign-in', function(req, res) {
 		var data = req.body;
 		var jsonResponse; 
@@ -52,9 +74,8 @@
 	    		});
 	    	} else {
 	    		var deserialized = JSON.parse(body);
-	    		var cookie = deserialized.user_token + "~" + deserialized.user_id;
-	    		var encrypted = CryptoJS.AES.encrypt(cookie, "Wigeon");
-    			res.cookie('wigeon_user_token', encrypted.toString(), { maxAge: 7776000000});
+				var cookieValue = signIn.encryptUserCookie(deserialized.user_token, deserialized.user_id);
+    			res.cookie('wigeon_user_token', cookieValue.toString(), { maxAge: 7776000000});
     			res.json({
     				success : true,
     				user_img : deserialized.user_profile_image
@@ -73,8 +94,6 @@
 
 
     app.get('/api/profile', function(req, res) {
-	    debugger; 
-	    console.log('asdf');
         var cookie = req.cookies.wigeon_user_token;
         var profile = new ProfileService();
         profile.getProfile(cookie, function(error, response) {

@@ -1,9 +1,16 @@
 <div class="container read-modal">
 	<div class="row">
-		<div class="col-xs-6">
-			<a ng-href="{{this.suggestionModelInfo.suggestion_general_link}}" target="_blank"><img src="assets/images/amazon.png"></a>
-			<p>Written By: {{this.suggestionModelInfo.suggestion_content_author}}</p>
-			<p>{{this.suggestionModelInfo.suggestion_description}}</p>
+		<div class="col-xs-12">
+			<img class="read-sug-image" ng-src="{{this.suggestionModelInfo.suggestion_icon_image}}" height="100px"/>
+			<div>
+				<p class='get-item'>GET IT: </p>	
+				<a ng-href="{{this.suggestionModelInfo.suggestion_general_link}}" target="_blank"><img ng-src="assets/images/amazon.png" /></a>
+			</div>
+			<div class="read-modal-about">
+				<h6> ABOUT </h6>
+				<p>Written By: {{this.suggestionModelInfo.suggestion_content_author}}</p>
+				<p>{{this.suggestionModelInfo.suggestion_description}}</p>
+			</div>
 		</div>
 	</div>
 </div>

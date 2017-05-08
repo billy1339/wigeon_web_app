@@ -1,6 +1,7 @@
 // methods used for signing user in
 var request = require("request");
 var config = require('./config.json');
+var CryptoJS = require("crypto-js");
 
 
 
@@ -16,7 +17,7 @@ var SignIn = function() {
 	    }
 		var options = { 
 			method: 'POST',
-		  	url: 'http://52.201.120.48/Wigeon/scripts/facebook-login.php',
+		  	url: config.requestUrl + 'scripts/facebook-login.php',
 		  	headers: 
 		   	{ 	 'cache-control': 'no-cache',
 		    	 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
@@ -35,7 +36,7 @@ var SignIn = function() {
 	    }
 		var options = { 
 			method: 'POST',
-		  	url: 'http://52.201.120.48/Wigeon/scripts/send-forgot-password-email.php',
+		  	url: config.requestUrl + 'scripts/send-forgot-password-email.php',
 		  	headers: 
 		   	{ 	 'cache-control': 'no-cache',
 		    	 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
@@ -47,6 +48,32 @@ var SignIn = function() {
 		  callback(error, body); 
 		});
   	};
+
+  	self.emailSignIn = function(data, callback) {
+		var data = {
+	    	user_email : data.email,
+	    	user_password : data.password
+	    }
+		var options = { 
+			method: 'POST',
+		  	url: config.requestUrl + 'scripts/email-login.php',
+		  	headers: 
+		   	{ 	 'cache-control': 'no-cache',
+		    	 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },
+		  	formData: data	  		
+		};
+
+		request(options, function (error, response, body) {
+		  if (error) throw new Error(error);
+		  callback(error, body); 
+		});
+  	}
+
+  	self.encryptUserCookie = function(token, id) {
+		var cookie = token + "~" + id;
+		var encrypted = CryptoJS.AES.encrypt(cookie, "Wigeon");
+		return encrypted;
+  	}
 }
 
 module.exports.SignIn = SignIn; 

@@ -1,6 +1,7 @@
 var async = require("async");
 var request = require("request");
 var CryptoJS = require("crypto-js");
+var config = require('./config.json');
 
 function ProfileService() {
   const self = this;
@@ -14,7 +15,7 @@ function ProfileService() {
       }
       var options = { 
         method: 'POST',
-        url: 'http://52.201.120.48/Wigeon/scripts/fetch-user.php',
+        url: config.requestUrl + 'scripts/fetch-user.php',
         headers: 
         {  'cache-control': 'no-cache',
            'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' 
@@ -51,7 +52,7 @@ function ProfileService() {
     }
     var options = { 
       method: 'POST',
-        url: 'http://52.201.120.48/Wigeon/scripts/fetch-user-feed.php',
+        url: config.requestUrl + 'scripts/fetch-user-feed.php',
         headers: 
         {    'cache-control': 'no-cache',
            'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },

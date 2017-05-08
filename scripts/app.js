@@ -3,7 +3,7 @@ angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
 var appRun = function ($rootScope, $cookies, $window) {
 	$rootScope.SignedIn = SignedIn(); 
   $rootScope.facebookAppId = '872785199480947';
-	$rootScope.baseApiUrl = 'http://52.201.120.48/Wigeon/scripts/';
+	$rootScope.baseApiUrl = 'http://52.70.139.161/Wigeon/';
   $rootScope.types = {
     0 : {
       'title' : 'ALL',
@@ -67,7 +67,20 @@ var appRun = function ($rootScope, $cookies, $window) {
     var date1 = new Date(createdDate * 1000);
     var date2 = new Date();
     var dayDiff = parseInt((date2 - date1) / (1000 * 60 * 60 * 24));
-    if(dayDiff >= 1) {
+    if(dayDiff>= 365) {
+      var yrs = dayDiff / 365;
+      yrs = Math.round( yrs * 10 ) / 10;
+      return yrs + "y ago";
+    } else if(dayDiff >= 30) {
+      var months = dayDiff / 30;
+      months = Math.round( months * 10 ) / 10;
+      return months + "m ago";
+    }
+    else if(dayDiff >= 7) {
+      var weeks = dayDiff / 7;
+      weeks = Math.round( weeks * 10 ) / 10;
+      return weeks + "w ago"
+    } else if(dayDiff > 0) {
       return dayDiff + "d ago";
     } else {
       var hourDiff = parseInt((date2 - date1) / (1000 * 60 * 60));

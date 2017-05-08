@@ -15,29 +15,15 @@ var SignInCtrl = function($scope, $http, $cookies, $location, $window, FacebookF
 
 
   $scope.UserLogin = function(user) {
-    var signInForm = new FormData();
-    signInForm.append("user_email", user.email);
-    signInForm.append("user_password", user.password);
-
-    $.ajax({
-        "async": true,
-        "crossDomain": true,
-        "url": $rootScope.baseApiUrl + "email-login.php",
-        "method": "POST",
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data",
-        "data": signInForm
-    }).done(function (response) {
-      var deserialized = JSON.parse(response);
-      if (deserialized.error_name !== undefined) {
-        alert(deserialized.error_name + deserialized.error_message)
-      }
-      else {
-        setUserCookie(deserialized.user_token, deserialized.user_id);
-        $rootScope.IsUserSignedIn(); 
-        $window.location.href = '/#/nest';
-      }
+    $http.post('/api/email-sign-in', user).success(function(response){
+      if(response.success) {
+          // w/correct url.
+          setUserImgCookie(response.user_img);
+          $rootScope.IsUserSignedIn(); 
+          $window.location.href = '/nest';
+        } else {
+          alert(response.error_message);
+        } 
     });
   };
 

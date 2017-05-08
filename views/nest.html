@@ -38,7 +38,8 @@
 						<div class='suggestion-content-info'>
 							<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:75:'...'}}</h4>
 							<h6>Category: {{suggestion.inbox_suggestion.suggestion_type.name}}</h6>
-							<h6 style="width:100%;">Suggested by {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<span>{{$root.calculateTimeDifference(suggestion.inbox_suggestion.suggestion_creation_epoch)}}</span></h6>
+							<h6 ng-if="suggestion.inbox_suggestion.suggestion_is_self_suggestion === 1" style="width:100%;">Self Suggestion<span>{{$root.calculateTimeDifference(suggestion.inbox_suggestion.suggestion_creation_epoch)}}</span></h6>
+							<h6 ng-if="suggestion.inbox_suggestion.suggestion_is_self_suggestion !== 1" style="width:100%;">Suggested by {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<span>{{$root.calculateTimeDifference(suggestion.inbox_suggestion.suggestion_creation_epoch)}}</span></h6>
 						</div>
 					</div>
 					<div  class="grid-view col-lg-4 col-md-4 col-sm-6" ng-if="view == 'GRID' ">
@@ -46,13 +47,14 @@
 							<div class='suggestion-content-info'>
 								<h4 class='nest-suggestion-title'>{{suggestion.inbox_suggestion.suggestion_title | cut:true:32:'...'}}</h4>
 							</div>
-							<div class='suggestion-picture' style="background: url('{{(suggestion.inbox_suggestion.suggestion_icon_image.length > 0 ? 'http://52.201.120.48/Wigeon/' + suggestion.inbox_suggestion.suggestion_icon_image : 'http://i.imgur.com/hfM1J8s.png')}}'), center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title == 'OTHER' ">
+							<div class='suggestion-picture' style="background: url('{{(suggestion.inbox_suggestion.suggestion_icon_image.length > 0 ? $root.baseApiUrl + suggestion.inbox_suggestion.suggestion_icon_image : '/assets/images/default.png')}}'), center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title == 'OTHER' ">
 							</div>
 							<div class='suggestion-picture' style="background: url('{{suggestion.inbox_suggestion.suggestion_icon_image}}') center no-repeat" ng-if="suggestion.inbox_suggestion.suggestion_type.title != 'OTHER' ">
 							</div>
 							<div class="suggestion-meta-data">
 								<h6>Category: {{suggestion.inbox_suggestion.suggestion_type.name}}</h6>
-								<h6>Suggested by {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<span>{{$root.calculateTimeDifference(suggestion.inbox_suggestion.suggestion_creation_epoch)}}</span></h6>
+								<h6 ng-if="suggestion.inbox_suggestion.suggestion_is_self_suggestion === 1">Self Suggestion<span>{{$root.calculateTimeDifference(suggestion.inbox_suggestion.suggestion_creation_epoch)}}</span></h6>
+								<h6 ng-if="suggestion.inbox_suggestion.suggestion_is_self_suggestion !== 1">Suggested by {{suggestion.inbox_suggestion.suggestion_user.user_full_name}}<span>{{$root.calculateTimeDifference(suggestion.inbox_suggestion.suggestion_creation_epoch)}}</span></h6>
 							</div>
 						</div>
 					</div>  

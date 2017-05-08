@@ -17,7 +17,7 @@
 
 	<div class='row right-section'>
 			<div class='user-info'>
-				<img src="{{vm.getProfileImg(profile.user_profile_image)}}" onerror"">
+				<img src="{{vm.getProfileImg(profile.user_profile_image)}}" onerror="this.src='https://thumb9.shutterstock.com/display_pic_with_logo/3038285/362901365/stock-vector-male-default-avatar-profile-gray-picture-isolated-on-white-background-for-your-design-vector-362901365.jpg'">
 				<h3 class="user-name">{{profile.user_full_name}}</h3>
 				<p class="user-bio">{{profile.user_bio}}</p>
 <!-- 				<div ng-class='total-followers'>Total Followers: {{profile.user_num_followers}}</div>
@@ -52,7 +52,7 @@
 							<div class='suggestion-content-info'>
 								<h4 class='nest-suggestion-title'>{{suggestion.feed_suggestion.suggestion_title | cut:true:25:' ...'}}</h4>
 							</div>
-							<div class='suggestion-picture' style="background: url('{{(suggestion.feed_suggestion.suggestion_icon_image.length > 0 ? 'http://52.201.120.48/Wigeon/' + suggestion.feed_suggestion.suggestion_icon_image : 'http://i.imgur.com/hfM1J8s.png')}}')), center no-repeat, blue" ng-if="suggestion.feed_suggestion.suggestion_type.title == 'OTHER' ">
+							<div class='suggestion-picture' style="background: url('{{(suggestion.feed_suggestion.suggestion_icon_image.length > 0 ? $root.baseApiUrl + suggestion.feed_suggestion.suggestion_icon_image : 'http://i.imgur.com/hfM1J8s.png')}}')), center no-repeat, blue" ng-if="suggestion.feed_suggestion.suggestion_type.title == 'OTHER' ">
 							</div>
 							<div class='suggestion-picture' style="background: url('{{suggestion.feed_suggestion.suggestion_icon_image}}') center no-repeat" ng-if="suggestion.feed_suggestion.suggestion_type.title != 'OTHER' ">
 							</div>

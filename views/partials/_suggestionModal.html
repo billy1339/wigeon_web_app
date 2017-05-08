@@ -4,11 +4,11 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">{{this.suggestionModelInfo.suggestion_title}}</h4>
-        <p class="modal-suggested-by">Suggested By {{this.suggestionModelInfo.suggestion_user.user_full_name}}
-        <span class="sug-time-diff">{{$root.calculateTimeDifference(this.suggestionModelInfo.suggestion_creation_epoch)}}</span>
+        <p ng-if="this.suggestionModelInfo.suggestion_is_self_suggestion === 1" class="modal-suggested-by">Self Suggestion<span class="sug-time-diff">{{$root.calculateTimeDifference(this.suggestionModelInfo.suggestion_creation_epoch)}}</span></p>
+        <p ng-if="this.suggestionModelInfo.suggestion_is_self_suggestion !== 1" class="modal-suggested-by">Suggested By {{this.suggestionModelInfo.suggestion_user.user_full_name}}<span class="sug-time-diff">{{$root.calculateTimeDifference(this.suggestionModelInfo.suggestion_creation_epoch)}}</span></p>
       </div>
       <div class="modal-body">
-        <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'WATCH' ">
+        <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'WATCH' " style="margin-top:-15px;">
           <div ng-include="'views/partials/_watchModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'READ' ">
@@ -21,8 +21,7 @@
             <div ng-include="'views/partials/_goModalSection.html'"></div>
         </div>
          <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'OTHER' ">
-          <p> other </p>
-          <!-- is there a way to get like a grab of a website -->
+            <div ng-include="'views/partials/_otherModalSection.html'"></div>
         </div>
       </div>
       <div class="modal-footer">

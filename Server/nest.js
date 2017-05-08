@@ -1,7 +1,7 @@
 // functions for the nest 
 var async = require("async");
 var request = require("request");
-
+var config = require('./config.json');
 
 
 var Nest = function() {
@@ -32,7 +32,7 @@ var Nest = function() {
     }
     var options = { 
       method: 'POST',
-        url: 'http://52.201.120.48/Wigeon/scripts/fetch-inbox.php',
+        url: config.requestUrl + 'scripts/fetch-inbox.php',
         headers: 
         {    'cache-control': 'no-cache',
            'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' },

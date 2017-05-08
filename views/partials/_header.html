@@ -14,7 +14,7 @@
       </li>
       
       <li ng-if="$root.SignedIn !== undefined" class="nav-item">
-        <a class="nav-link profile-link" href="/profile">View Profile <img ng-src="{{$root.userImg}}" class="user-profile-img"></a>
+        <a class="nav-link profile-link" href="/profile">View Profile <img ng-src="{{$root.userImg}}" class="user-profile-img" onerror="this.src='https://thumb9.shutterstock.com/display_pic_with_logo/3038285/362901365/stock-vector-male-default-avatar-profile-gray-picture-isolated-on-white-background-for-your-design-vector-362901365.jpg'"></a>
       </li>
       <li ng-if="$root.SignedIn !== undefined" class="nav-item">
         <a class="nav-link nav-border-left" href="#" ng-click="$root.SignOut()">Sign Out</a>
