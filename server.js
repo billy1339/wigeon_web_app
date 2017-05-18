@@ -13,6 +13,8 @@
 	var Yelp = require('./Server/yelp.js').Yelp;
 	var ProfileService = require('./Server/profile.js').ProfileService;
 	var config = require('./Server/config.json');
+	var EmailService = require('./Server/EmailService.js').EmailService;
+	var Helpers = require('./Server/Helpers/Helpers.js').Helpers; 
 	var querystring = require('querystring');
   	app.use(express.static(__dirname + '/dist'));     // set the static files location /public/img will be /img for users
 	app.use(cookieParser());
@@ -122,6 +124,20 @@
 		passwordSend.forgotPassword(req.body.email, function(error, response, body) {
 			res.json(response);
 		});
+	});
+
+	app.post('/api/contact-us-email', function(req, res) {
+		var cookie = res.cookie('wigeon_user_token');
+		var userId; 
+		if (cookie != undefined) {
+			var helpers = new Helpers();
+			var userId = helpers.GetIdFromUserCookie(cookie); 
+		} else {
+			userId = 0; 
+		}
+		
+		var emailService = new EmailService();
+		emailService.sendContactUsEmail(req.body.Email, req.body.Note, userId);
 	});
 
     // listen (start app with node server.js) ======================================

@@ -15,7 +15,8 @@ var Nest = function() {
           next(err, data);
         });
         start++; 
-      }, function(err, data){
+      }, function(error, data){
+        if (error) throw new Error(error);
         callback(sugs);
       });
   };

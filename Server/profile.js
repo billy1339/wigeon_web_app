@@ -38,11 +38,13 @@ function ProfileService() {
         });
         start++; 
       }, function(err, data){
+        if(err) throw new Error(error);
         callback(sugs);
       });
   };
 
   self.inboxRequest = function(cookie, page, callback) {
+    debugger; 
     var data = {
       user_id : cookie[1],
       requesting_user_id : cookie[1],
@@ -65,45 +67,6 @@ function ProfileService() {
     });
 
   };
-
-
-
-
-  // self.searchMovies = function(query, callback) {
-  // 		Guidebox.search.movies(
-  // 			{
-  // 				field: 'title', 
-  // 				query: query
-  // 			}).then(function(response) {
-  // 				callback(response);
-  // 			});
-  // }
-
-  // self.searchShows = function(query, callback) {
-  // 		Guidebox.search.shows(
-  // 			{
-  // 				field: 'title', 
-  // 				query: query
-  // 			}).then(function(response) {
-  // 				callback(response);
-  // 			});
-  // }
-
-  // self.getShowById = function(id, callback) {
-  // 		console.log(id);
-  // 		Guidebox.shows.retrieve(id)
-  // 			.then(function(response) {
-  // 				callback(response);
-  // 			});
-  // }
-
-  // self.getMovieById = function(id, callback) {
-  // 		Guidebox.movies.retrieve(id)
-  // 			.then(function(response) {
-  // 				callback(response);
-  // 			});
-  // }
-
 }
 
 // TODO. 

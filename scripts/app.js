@@ -1,6 +1,6 @@
 angular.module('WigeonApp', ['ngRoute', 'ngCookies']);
 
-var appRun = function ($rootScope, $cookies, $window) {
+var appRun = function ($rootScope, $cookies, $window, $http) {
 	$rootScope.SignedIn = SignedIn(); 
   $rootScope.facebookAppId = '872785199480947';
 	$rootScope.baseApiUrl = 'http://52.70.139.161/Wigeon/';
@@ -63,6 +63,16 @@ var appRun = function ($rootScope, $cookies, $window) {
     return result;
   }
 
+  $rootScope.sendContactUs = function(contact) {
+    var data = {
+      Email : contact.Email,
+      Note : contact.Note
+    }
+    $http.post("/api/contact-us-email", data).then(function(response) {
+      debugger; 
+    });
+  }
+
   $rootScope.calculateTimeDifference = function(createdDate) {
     var date1 = new Date(createdDate * 1000);
     var date2 = new Date();
@@ -119,5 +129,5 @@ var appRun = function ($rootScope, $cookies, $window) {
 
 };
 
-appRun.$inject = ['$rootScope', '$cookies', '$window'];
+appRun.$inject = ['$rootScope', '$cookies', '$window', '$http'];
 angular.module('WigeonApp').run(appRun);

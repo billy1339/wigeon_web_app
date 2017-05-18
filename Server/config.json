@@ -3,7 +3,14 @@
 	"facebookAppID" : "872785199480947",
 	"facebookAppSecret" : "2963aea9a166ac7a17482b64aea5ba5e",
 	"facebookRedirectUrI" :"http://localhost:8081/auth/facebook/redirect",
+	
+
 	"requestUrl" : "http://52.70.139.161/Wigeon/",
 	"prodRequestUrl" : "http://52.70.139.161/Wigeon/",
-	"qaRequestUrl" : "http://52.201.120.48/Wigeon/"
+	"qaRequestUrl" : "http://52.201.120.48/Wigeon/",
+
+	"info_email_pw" : "Teewinot 2015!",
+	"ContactEmailDistoList": "wsargent39@gmail.com, william.m.sargent@gmail.com",
+
+	"EncryptionKey" : "Wigeon"
 }
