@@ -45,6 +45,7 @@ var EmailService = function() {
 		string += "</p>";
 		return string; 
 	};
+
 }
 
 module.exports.EmailService = EmailService; 

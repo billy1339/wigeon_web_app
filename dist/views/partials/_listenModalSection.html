@@ -1,0 +1,17 @@
+<div class="container listen-modal">
+	<div class="row">
+		<div class="col-xs-6">
+			<!-- <p>{{this.suggestionModelInfo.suggestion_source_preview_link}}</p> -->
+			<h5>{{this.suggestionModelInfo.suggestion_title}} - {{this.suggestionModelInfo.suggestion_description}}</h5>
+
+			<audio id="MusicPreview" class='center' controls preload="false" data-ng-src="{{returnTrustedSrc(this.suggestionModelInfo.suggestion_source_preview_link)}}" style="width:480px;">
+				<source ng-src="{{returnTrustedSrc(this.suggestionModelInfo.suggestion_source_preview_link)}}" type="audio/m4a" />
+				<source ng-src="{{returnTrustedSrc(this.suggestionModelInfo.suggestion_source_preview_link)}}" type="audio/ogg" />
+				<p>Your browser does not support HTML5 audio.</p>
+		 	</audio>
+		 	<img class="center" ng-src="{{this.suggestionModelInfo.suggestion_background_image}}"/>
+		 	<p class='get-item'>GET IT</p>
+		 	<a ng-href="{{this.suggestionModelInfo.suggestion_source_media_link}}" target="_blank"><img src="/assets/images/Get_it_on_iTunes_Badge_US_1114.svg"></a>
+		</div>
+	</div>
+</div>

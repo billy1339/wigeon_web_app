@@ -71,6 +71,15 @@ gulp.task('bower', function () {
     .pipe(gulp.dest('./dist/vendor/'))
 });
 
+gulp.task('server-folder', function() {
+  return gulp.src(['./Server/*'])
+    .pipe(gulp.dest('./dist/Server/'))
+});
+gulp.task('server-folder-helpers', function() {
+  return gulp.src(['./Server/Helpers/*'])
+    .pipe(gulp.dest('./dist/Server/Helpers/'))
+});
+
 // gulp.task('encrypt', function() {
 //   return gulp.src(['bower_components/crypto-js/cipher-core.js',
 //           'bower_components/crypto-js/cipher-core.js', 
@@ -99,4 +108,4 @@ gulp.task('html', function () {
 });
 
 
-gulp.task('default', ['html', 'images','bower','styles', 'scripts', 'watch'])
+gulp.task('default', ['html', 'images','bower','styles', 'scripts', 'watch', 'server-folder', 'server-folder-helpers'])
