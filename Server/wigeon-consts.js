@@ -1,14 +1,14 @@
 // Server Constants
 var WigeonConsts = function() {
 	var self = this; 
-	self.SALTA = "Superior";
-	self.SALTB = "Boisterious";
+	self.SALTA = "xxxx";
+	self.SALTB = "xxxx";
 
 	// yelp
-	self.YelpConsumerKey = 'lKkcg8K312U3GcPuF8d_Eg';
-	self.YelpConsumerSecret = 'aAYgRl9NlmCZeVAhMMzNaHR380U';
-	self.YelpToken = 'gHBzFC4tETChx6cIN8Te4-Spchzlhcpn';
-	self.YelpTokenSecret = 'CwneNMN8-3SfuVhsqv6wU48THfI';
+	self.YelpConsumerKey = 'xxxx';
+	self.YelpConsumerSecret = 'xxxx';
+	self.YelpToken = 'xxxx';
+	self.YelpTokenSecret = 'xxxx';
 }
 
 module.exports.WigeonConsts = WigeonConsts;

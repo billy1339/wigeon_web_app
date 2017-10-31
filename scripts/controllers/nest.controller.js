@@ -170,6 +170,14 @@ var NestCtrl = function($scope, $http, $cookies, $window, SuggestionFactory, $ro
     return;   
   }
 
+  function load_image_instead_of_ajax_call(dom_parent_element,image_url) {
+    var img = document.createElement('img');
+    img.onload = your_success_callback_function;
+    img.onerror = your_error_callback_function;
+    img.src = image_url;
+    dom_parent_element.appendChild(img);
+}
+
 };
 
 NestCtrl.$inject = ['$scope', '$http', '$cookies', '$window', 'SuggestionFactory', '$rootScope', '$sce', 'YelpFactory'];
