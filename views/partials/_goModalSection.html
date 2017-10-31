@@ -1,0 +1,28 @@
+<div class="container go-modal">
+	<div class="row">
+		<div class="col-sm-6 col-xs-12">
+			
+		<div class="info">
+			<p class="get-item"> INFO </p>
+			<p class="go-sug-info"><strong>Yelp Rating: </strong><img ng-src="{{yelp.rating_img_url}}" />
+			<p class="go-sug-info"><strong>Address:</strong></p>
+			<p class="go-sug-info" ng-repeat="address in yelp.location.display_address">
+				{{address}}
+			</p>
+			<p class="go-sug-info"><strong>Phone: </strong> <a href="tel:{{yelp.display_phone}}">{{yelp.display_phone}}</a></p>
+			<p class="go-sug-info"><strong>Description: </strong> {{this.suggestionModelInfo.suggestion_description}}</p>
+
+		</div>
+		</div>
+	<div class="col-sm-6 col-xs-12">
+		<div class="map">
+				<img border='0' src="https://maps.googleapis.com/maps/api/staticmap?center={{yelp.location.coordinate.latitude}},{{yelp.location.coordinate.longitude}}&zoom=14&size=250x250&markers=color:0x00b7af%7C{{yelp.location.coordinate.latitude}},{{yelp.location.coordinate.longitude}}&key=AIzaSyDEVy0cGxOmK58Q0xaOs9CnH1j0DB-i5ns">
+		</div>
+	</div>
+	<div class="col-xs-12">
+			<p class="get-item"> MORE </p>
+			<a class="yelp-image" ng-href="{{yelp.mobile_url}}" target="_blank"><img src="assets/images/yelp-asset.png" height="40px;"></a>
+	</div>
+
+</div>
+</div>

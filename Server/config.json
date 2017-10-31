@@ -1,0 +1,16 @@
+{
+	"key" : "xxxx",
+	"facebookAppID" : "xxxx",
+	"facebookAppSecret" : "xxxx",
+	"facebookRedirectUrI" :"http://localhost:8081/auth/facebook/redirect",
+	
+
+	"requestUrl" : "http://52.70.139.161/Wigeon/",
+	"prodRequestUrl" : "http://52.70.139.161/Wigeon/",
+	"qaRequestUrl" : "http://52.201.120.48/Wigeon/",
+
+	"info_email_pw" : "xxxx",
+	"ContactEmailDistoList": "xxxxx@gmail.com, xxxxxx@gmail.com",
+
+	"EncryptionKey" : "xxxxxxx"
+}

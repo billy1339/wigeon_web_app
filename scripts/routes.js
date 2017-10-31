@@ -1,25 +1,25 @@
-var appRoutes = function($routeProvider) {
+var appRoutes = function($routeProvider, $locationProvider) {
   'use strict';
   $routeProvider
-    .when('/', {
-      templateUrl: 'views/home.html'
-    })
     .when('/sign-in', {
       templateUrl: 'views/sign-in.html'
+    })
+    .when('/sign-up', {
+      templateUrl: 'views/sign-up.html'
     })
     .when('/nest', {
       templateUrl: 'views/nest.html'
     })
+    .when('/profile', {
+      templateUrl: 'views/profile.html'
+    })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/sign-in'
     });
     
-    // $locationProvider.html5Mode({
-    //   enabled: true,
-    //   requireBase: false
-    // });
+    $locationProvider.html5Mode(true);
 };
-appRoutes.$inject = ['$routeProvider'];
+appRoutes.$inject = ['$routeProvider', '$locationProvider'];
 angular.module('WigeonApp').config(appRoutes);
 
 

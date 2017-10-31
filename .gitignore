@@ -1,2 +1,4 @@
-bower_components
 node_modules
+keys.txt
+server-constant-keys.txt
+node_modules/*

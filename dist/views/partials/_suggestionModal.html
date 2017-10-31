@@ -1,0 +1,37 @@
+ <div class="modal fade" tabindex="-1" role="dialog" id="SuggestionDetailModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{this.suggestionModelInfo.suggestion_title}}</h4>
+        <p ng-if="this.suggestionModelInfo.suggestion_is_self_suggestion === 1" class="modal-suggested-by">Self Suggestion<span class="sug-time-diff">{{$root.calculateTimeDifference(this.suggestionModelInfo.suggestion_creation_epoch)}}</span></p>
+        <p ng-if="this.suggestionModelInfo.suggestion_is_self_suggestion !== 1" class="modal-suggested-by">Suggested By {{this.suggestionModelInfo.suggestion_user.user_full_name}}<span class="sug-time-diff">{{$root.calculateTimeDifference(this.suggestionModelInfo.suggestion_creation_epoch)}}</span></p>
+      </div>
+      <div class="modal-body">
+        <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'WATCH' " style="margin-top:-15px;">
+          <div ng-include="'views/partials/_watchModalSection.html'"></div>
+        </div>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'READ' ">
+          <div ng-include="'views/partials/_readModalSection.html'"></div>
+        </div>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'LISTEN' ">
+          <div ng-include="'views/partials/_listenModalSection.html'"></div>
+        </div>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'GO' ">
+            <div ng-include="'views/partials/_goModalSection.html'"></div>
+        </div>
+         <div ng-if="this.suggestionModelInfo.suggestion_type.title == 'OTHER' ">
+            <div ng-include="'views/partials/_otherModalSection.html'"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="suggested-to" ng-repeat="user in this.suggestionModelInfo.suggestion_users">
+          <div class="suggested-to-user">
+            <img ng-src="{{vm.getProfileImg(user.user_profile_image)}}" onerror="this.src='https://thumb9.shutterstock.com/display_pic_with_logo/3038285/362901365/stock-vector-male-default-avatar-profile-gray-picture-isolated-on-white-background-for-your-design-vector-362901365.jpg'"/>
+            <p>{{user.user_full_name}}</p>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

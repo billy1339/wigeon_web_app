@@ -45,7 +45,7 @@ gulp.task('styles', function() {
 gulp.task('watch', function() {
   gulp.watch('./scripts/**/*.js', ['scripts']);
   gulp.watch('./sass/*.scss', ['styles']);
-  gulp.watch('./templates/**/*.html', ['html']);
+  gulp.watch('./views/**/*.html', ['html']);
 });
 
 // clean task
@@ -55,9 +55,45 @@ gulp.task('clean', function (cb) {
 
 // bower task
 gulp.task('bower', function () {
-  return gulp.src(['bower_components/angular/angular.min.js','bower_components/angular/angular.min.js.map', 'bower_components/angular-route/angular-route.min.js','bower_components/angular/angular.min.js.map', 'bower_components/angular-route/angular-route.min.js.map', 'bower_components/jquery/dist/jquery.min.js', 'bower_components/bootstrap/dist/js/bootstrap.min.js', 'bower_components/bootstrap/dist/css/bootstrap.min.css'])
+  return gulp.src(['bower_components/angular/angular.min.js',
+        'bower_components/angular/angular.min.js.map', 
+        'bower_components/angular-route/angular-route.min.js',
+        'bower_components/angular/angular.min.js.map', 
+        'bower_components/angular-route/angular-route.min.js.map', 
+        'bower_components/jquery/dist/jquery.min.js', 
+        'bower_components/bootstrap/dist/js/bootstrap.min.js', 
+        'bower_components/bootstrap/dist/css/bootstrap.min.css', 
+        'bower_components/angular-cookies/angular-cookies.min.js', 
+        'bower_components/angular-cookies/angular-cookies.min.js.map',
+        'bower_components/angular-bootstrap/ui-bootstrap.min.js', 
+        'bower_components/oauth-signature/dist/oauth-signature.min.js', 
+        'bower_components/crypto-js/crypto-js.js'])
     .pipe(gulp.dest('./dist/vendor/'))
 });
+
+gulp.task('server-folder', function() {
+  return gulp.src(['./Server/*'])
+    .pipe(gulp.dest('./dist/Server/'))
+});
+gulp.task('server-folder-helpers', function() {
+  return gulp.src(['./Server/Helpers/*'])
+    .pipe(gulp.dest('./dist/Server/Helpers/'))
+});
+
+// gulp.task('encrypt', function() {
+//   return gulp.src(['bower_components/crypto-js/cipher-core.js',
+//           'bower_components/crypto-js/cipher-core.js', 
+//           'bower_components/crypto-js/aes.js', 
+//           'bower_components/crypto-js/sha256.js', 
+//           'bower_components/crypto-js/enc-utf8.js'])
+//     .pipe(concat('encryption.js'))
+//     .pipe(gulp.dest('./dist/vendor/'));
+//     // .pipe(uglify())
+//     // .pipe(rename({
+//     //   suffix: '.min'
+//     // }))
+//     // .pipe(gulp.dest('./dist/vendor/'));
+// });
 
 //images task
 gulp.task('images', function () {
@@ -72,4 +108,4 @@ gulp.task('html', function () {
 });
 
 
-gulp.task('default', ['html', 'images','bower', 'styles', 'scripts', 'watch'])
+gulp.task('default', ['html', 'images','bower','styles', 'scripts', 'watch', 'server-folder', 'server-folder-helpers'])
